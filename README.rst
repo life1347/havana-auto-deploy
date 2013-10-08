@@ -1,6 +1,11 @@
 Havana From Packages
 ####################
 
+::
+
+    git clone https://github.com/dmitry-teselkin/havana-from-packages.git
+..
+
 Configure software sources
 ==========================
 
@@ -31,7 +36,7 @@ Add **CloudArchive** repository:
 
     # Public -proposed archive mimicking the SRU process for extended testing.
     # Packages should bake here for at least 7 days. 
-    #deb  http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
+    deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 ..
 
 * Configure package pinning rules
@@ -40,13 +45,13 @@ Add **CloudArchive** repository:
 
 ::
 
-    Package: openvswitch-*
-    Pin: release o=Ubuntu
-    Pin-Priority: 501
+    #Package: openvswitch-*
+    #Pin: release o=Ubuntu
+    #Pin-Priority: 501
 
-    Package: novnc
-    Pin: release o=Ubuntu
-    Pin-Priority: 501
+    #Package: novnc
+    #Pin: release o=Ubuntu
+    #Pin-Priority: 501
 ..
 
 * Update
@@ -163,3 +168,72 @@ Install Compute part
     and reboot the machine
     your bug will get resolved
 ..
+
+
+Install Heat
+------------
+
+* Install Heat
+
+::
+
+    apt-get -y install heat-api heat-api-cfn heat-api-cloudwatch \
+        heat-common heat-engine python-heat python-heatclient
+..
+
+* Configure /etc/heat/api-paste.ini
+
+::
+
+    --- api-paste.ini.orig  2013-10-08 10:07:11.672155268 -0400
+    +++ api-paste.ini   2013-10-08 10:46:02.708196472 -0400
+    @@ -77,6 +77,13 @@
+     # Auth middleware that validates token against keystone
+     [filter:authtoken]
+     paste.filter_factory = heat.common.auth_token:filter_factory
+    +auth_host = 127.0.0.1
+    +auth_port = 35357
+    +auth_protocol = http
+    +auth_uri = http://127.0.0.1:5000/v2.0
+    +admin_tenant_name = admin
+    +admin_user = admin
+    +admin_password = swordfish
+     
+    # Auth middleware that validates username/password against keystone
+     [filter:authpassword]
+..
+
+* Configure /etc/heat/heat.conf
+
+::
+
+    --- heat.conf.orig  2013-10-08 10:08:00.071029682 -0400
+    +++ heat.conf   2013-10-08 10:35:13.874480898 -0400
+    @@ -137,10 +137,12 @@
+     # Print debugging output (set logging level to DEBUG instead
+     # of default WARNING level). (boolean value)
+     #debug=false
+    +debug=true
+     
+     # Print more verbose output (set logging level to INFO instead
+     # of default WARNING level). (boolean value)
+     #verbose=false
+    +verbose=true
+     
+     # Log output to standard error (boolean value)
+     #use_stderr=true
+    @@ -203,6 +205,7 @@
+     # (Optional) The base directory used for relative --log-file
+     # paths (string value)
+     #log_dir=<None>
+    +log_dir=/var/log/heat
+     
+     # Use syslog for logging. (boolean value)
+     #use_syslog=false
+..
+
+Bugs
+====
+
+* https://review.openstack.org/#/c/48749/2/heat/engine/resources/neutron/port.py
+* https://ask.openstack.org/en/question/4222/horizon-console-displays-blank-screen-with-message-novnc-ready-native-websockets-canvas-rendering/

@@ -11,18 +11,20 @@ deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/havana main
 #deb  http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 EOF
 
-cat << EOF > /etc/apt/preferences/local.pref
-Package: openvswitch-*
-Pin: release o=Ubuntu
-Pin-Priority: 501
-
-Package: novnc
-Pin: release o=Ubuntu
-Pin-Priority: 501
-EOF
+#cat << EOF > /etc/apt/preferences.d/local.pref
+#Package: openvswitch-*
+#Pin: release o=Ubuntu
+#Pin-Priority: 501
+#
+#Package: novnc
+#Pin: release o=Ubuntu
+#Pin-Priority: 501
+#EOF
 
 apt-get update
 
-apt-get -y install python-dev
+apt-get -y install python-dev python-setuptools
 
 easy_install pip
+
+apt-get -y install ntp

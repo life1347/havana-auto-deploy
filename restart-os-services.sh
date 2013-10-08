@@ -18,6 +18,19 @@ neutron-l3-agent
 neutron-plugin-openvswitch-agent
 '
 
+cinder_services='
+cinder-api
+cinder-scheduler
+cinder-volume
+'
+
+heat_services='
+heat-api
+heat-api-cfn
+heat-api-cloudwatch
+heat-engine
+'
+
 restart_services() {
     for service in "$@" ; do
         echo ''
@@ -36,6 +49,12 @@ case $1 in
   ;;
   'neutron')
     restart_services $neutron_services
+  ;;
+  'cinder')
+    restart_services $cinder_services
+  ;;
+  'heat')
+    restart_services $heat_services
   ;;
   *)
     echo "Wrong group name"

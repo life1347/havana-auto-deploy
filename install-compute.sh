@@ -4,24 +4,28 @@
 
 #easy_install pip
 
-pip install --upgrade websockify
+#pip install --upgrade websockify
 
 apt-get install -y nova-api nova-cert nova-common nova-conductor \
     nova-scheduler python-nova python-novaclient nova-consoleauth novnc \
     nova-novncproxy
 
+#-------------------------------------------------------------------------------
 
 cat << EOF > /tmp/api-paste.ini.part
+[filter:authtoken]
 admin_tenant_name = service
 admin_user = nova
 admin_password = password
 EOF
 
+#-------------------------------------------------------------------------------
+
 cat << EOF > /tmp/nova.conf.part
 [DEFAULT]
 sql_connection=mysql://nova:swordfish@localhost/nova
 my_ip=10.10.10.10
-rabbit_password=password
+rabbit_password=guest
 auth_strategy=keystone
 
 # Networking
@@ -58,6 +62,8 @@ novncproxy_port=6080
 #novncproxy_host=10.0.0.10
 vncserver_listen=0.0.0.0
 EOF
+
+#-------------------------------------------------------------------------------
 
 #./merge-config.sh /etc/nova/api-paste.ini /tmp/api-paste.ini.part
 #./merge-config.sh /etc/nova/nova.conf /tmp/nova.conf.part

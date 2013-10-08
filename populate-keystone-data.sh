@@ -18,7 +18,7 @@ MYSQL_PASSWORD=swordfish
 
 #
 KEYSTONE_REGION=RegionOne
-KEYSTONE_HOST=127.0.0.1
+KEYSTONE_HOST=10.10.10.10
 
 
 # Shortcut function to get a newly generated ID
@@ -125,6 +125,11 @@ NETWORK_SERVICE=$(keystone service-create \
   --type network \
   --description 'OpenStack Networking service' | grep " id " | get_field 2)
 
+HEAT_SERVICE=$(keystone service-create \
+  --name heat \
+  --type orchestration \
+  --description 'HEAT Orchestration API' | grep " id " | get_field 2)
+
 
 # Create endpoints
 keystone endpoint-create \
@@ -168,4 +173,11 @@ keystone endpoint-create \
   --publicurl 'http://'"$KEYSTONE_HOST"':9696/' \
   --adminurl 'http://'"$KEYSTONE_HOST"':9696/' \
   --internalurl 'http://'"$KEYSTONE_HOST"':9696/'
+
+keystone endpoint-create \
+  --region $KEYSTONE_REGION \
+  --service-id $HEAT_SERVICE \
+  --publicurl 'http://'"$KEYSTONE_HOST"':8004/v1/%(tenant_id)s' \
+  --adminurl 'http://'"$KEYSTONE_HOST"':8004/v1/%(tenant_id)s' \
+  --internalurl 'http://'"$KEYSTONE_HOST"':8004/v1/%(tenant_id)s'
 
