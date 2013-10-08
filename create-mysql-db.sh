@@ -17,3 +17,7 @@ GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'10.10.10.9' IDENTIFIED BY '$pass
 GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'10.10.10.11' IDENTIFIED BY '$password';
 FLUSH PRIVILEGES;
 EOF
+
+mysql -u root -p <<EOF
+show databases;
+EOF

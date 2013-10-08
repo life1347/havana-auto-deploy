@@ -43,6 +43,10 @@ Add **CloudArchive** repository:
     Package: openvswitch-*
     Pin: release o=Ubuntu
     Pin-Priority: 501
+
+    Package: novnc
+    Pin: release o=Ubuntu
+    Pin-Priority: 501
 ..
 
 * Update
@@ -59,6 +63,38 @@ In general, installation steps are the same as in the official guide "How to ins
 
 Install Controller part
 -----------------------
+
+
+* Edit */etc/sysctl.conf*:
+
+::
+
+    net.ipv4.conf.all.rp_filter = 0
+    net.ipv4.conf.default.rp_filter = 0
+..
+
+* Apply the sysctl settings:
+
+::
+
+    ># sysctl -e -p /etc/sysctl.conf
+..
+
+* Install ntp
+
+::
+
+    ># apt-get install -y ntp
+..
+
+Install MySQL
+-------------
+
+::
+
+    ># apt-get install -y python-mysqldb mysql-server
+..
+
 
 ::
 
@@ -79,8 +115,46 @@ Install Controller part
     ># vgcreate cinder-volumes /dev/loop0
 ..
 
+Install RabbitMQ Server
+-----------------------
+
+::
+
+    ./install-rabbitmq-server.sh
+..
+
+Install Keystone Service
+------------------------
+
+::
+
+    ./install-keystone.sh
+..
+
+::
+
+    source openrc
+    ./populate-keystone-data.sh
+..
+
+Install Image Service
+---------------------
+
+::
+
+    ./install-glance.sh
+..
+
+::
+
+    ./glance-import-image.sh
+..
+
 Install Compute part
 --------------------
+
+
+
 
 ::
 
