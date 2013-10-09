@@ -6,6 +6,11 @@ Havana From Packages
     git clone https://github.com/dmitry-teselkin/havana-from-packages.git
 ..
 
+Prerequisites
+=============
+
+* Ubuntu Server 12.04.3 x64
+
 Configure software sources
 ==========================
 
@@ -39,7 +44,7 @@ Add **CloudArchive** repository:
     deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 ..
 
-* Configure package pinning rules
+* (**SKIP THIS**) Configure package pinning rules
 
 **/etc/apt/preferences/local.pref**
 

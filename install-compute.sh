@@ -65,5 +65,5 @@ EOF
 
 #-------------------------------------------------------------------------------
 
-#./merge-config.sh /etc/nova/api-paste.ini /tmp/api-paste.ini.part
-#./merge-config.sh /etc/nova/nova.conf /tmp/nova.conf.part
+./merge-config.py /etc/nova/api-paste.ini /tmp/api-paste.ini.part
+./merge-config.py /etc/nova/nova.conf /tmp/nova.conf.part

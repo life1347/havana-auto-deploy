@@ -12,7 +12,7 @@ verbose = True
 connection = mysql://keystone:password@localhost/keystone
 EOF
 
-#./merge-config.sh /etc/keystone/keystone.conf /tmp/keystone.config
+./merge-config.py /etc/keystone/keystone.conf /tmp/keystone.config
 
 service keystone restart
 

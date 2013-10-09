@@ -16,8 +16,8 @@ admin_password = password
 flavor=keystone
 EOF
 
-#./merge-config.sh /etc/glance/glance-api.conf /tmp/glance.config
-#./merge-config.sh /etc/glance/glance-registry.conf /tmp/glance.config
+./merge-config.py /etc/glance/glance-api.conf /tmp/glance.config
+./merge-config.py /etc/glance/glance-registry.conf /tmp/glance.config
 
 service glance-api restart && service glance-registry restart
 
