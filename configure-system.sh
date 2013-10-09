@@ -23,8 +23,23 @@ EOF
 
 apt-get update
 
-apt-get -y install python-dev python-setuptools
 
+apt-get -y install python-dev python-setuptools
 easy_install pip
 
+
 apt-get -y install ntp
+
+
+cat << EOF >> /etc/sysctl.conf
+
+
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.forwarding = 1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+EOF
+
+/etc/init.d/networking restart
+
+sysctl -e -p /etc/sysctl.conf

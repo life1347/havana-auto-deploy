@@ -6,22 +6,32 @@ Havana From Packages
     git clone https://github.com/dmitry-teselkin/havana-from-packages.git
 ..
 
+In general, installation steps are the same as in the official guide `OpenStack Basic Installation Guide for Ubuntu 12.04 (LTS) and Debian Wheezy <http://docs.openstack.org/grizzly/basic-install/apt/content/index.html>`_.
+
+There are a numerous notes, however. Some of them fixes bugs and typos, and the other - correct the guide to be applicable to Havana release.
+
 Prerequisites
 =============
 
 * Ubuntu Server 12.04.3 x64
 
-Configure software sources
-==========================
+Configure the system
+====================
 
-Add **CloudArchive** repository:
+**Scripted**
 
-**Link**
+* Configure network in **/etc/network/interfaces**
+
+* Run the script 
 
 ::
 
-    https://wiki.ubuntu.com/ServerTeam/CloudArchive
+    ./configure-system.sh
 ..
+
+**Manual**
+
+* Configure network in **/etc/network/interfaces**
 
 * Add the *ubuntu-cloud-keyring* package:
 
@@ -30,9 +40,7 @@ Add **CloudArchive** repository:
     ># apt-get install ubuntu-cloud-keyring
 ..
 
-* Add repository into apt sources
-
-**/etc/apt/sources.list.d/cloud-archive.list**
+* Add *CloudArchive* repositories into apt sources **/etc/apt/sources.list.d/cloud-archive.list**
 
 ::
 
@@ -44,9 +52,7 @@ Add **CloudArchive** repository:
     deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 ..
 
-* (**SKIP THIS**) Configure package pinning rules
-
-**/etc/apt/preferences/local.pref**
+* **SKIP THIS** Configure package pinning rules in **/etc/apt/preferences/local.pref**
 
 ::
 
@@ -66,21 +72,21 @@ Add **CloudArchive** repository:
     ># apt-get update
 ..
 
-Install OpenStack
-=================
-
-In general, installation steps are the same as in the official guide "How to install OpenStack Grizzly on Ubuntu 12.04".
-
-Install Controller part
------------------------
-
-
-* Edit */etc/sysctl.conf*:
+* Add to **/etc/sysctl.conf**
 
 ::
 
+    net.ipv4.ip_forward = 1
+    net.ipv4.conf.all.forwarding = 1
     net.ipv4.conf.all.rp_filter = 0
     net.ipv4.conf.default.rp_filter = 0
+..
+
+* Restart networking
+
+::
+
+    /etc/init.d/networking restart
 ..
 
 * Apply the sysctl settings:
@@ -90,21 +96,36 @@ Install Controller part
     ># sysctl -e -p /etc/sysctl.conf
 ..
 
-* Install ntp
+* Install *ntp*
 
 ::
 
     ># apt-get install -y ntp
 ..
 
+Install Controller part
+=======================
+
+First, configure the **./openrc** file.
+
 Install MySQL
 -------------
 
+**Scripted**
+
 ::
 
-    ># apt-get install -y python-mysqldb mysql-server
+    ./install-mysql.sh
 ..
 
+::
+
+    ./create-mysql-db.sh
+..
+
+**Manual**
+
+See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-mysql
 
 ::
 
@@ -128,13 +149,19 @@ Install MySQL
 Install RabbitMQ Server
 -----------------------
 
+**Scripted**
+
 ::
 
     ./install-rabbitmq-server.sh
 ..
 
+**Manual**
+
 Install Keystone Service
 ------------------------
+
+**Scripted**
 
 ::
 
@@ -147,8 +174,14 @@ Install Keystone Service
     ./populate-keystone-data.sh
 ..
 
+**Manual**
+
+See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-keystone
+
 Install Image Service
 ---------------------
+
+**Scripted**
 
 ::
 
@@ -160,11 +193,17 @@ Install Image Service
     ./glance-import-image.sh
 ..
 
+**Manual**
+
+See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-glance
+
+Install Network part
+====================
+
+
+
 Install Compute part
---------------------
-
-
-
+====================
 
 ::
 
@@ -187,6 +226,15 @@ Install Heat
 ..
 
 * Configure /etc/heat/api-paste.ini
+
+**Scripted**
+
+::
+
+    ./install-heat.sh
+..
+
+**Manual**
 
 ::
 
@@ -237,8 +285,13 @@ Install Heat
      #use_syslog=false
 ..
 
+Links
+=====
+
+* https://wiki.ubuntu.com/ServerTeam/CloudArchive
+
 Bugs
 ====
 
-* https://review.openstack.org/#/c/48749/2/heat/engine/resources/neutron/port.py
 * https://ask.openstack.org/en/question/4222/horizon-console-displays-blank-screen-with-message-novnc-ready-native-websockets-canvas-rendering/
+* https://review.openstack.org/#/c/48749/2/heat/engine/resources/neutron/port.py
