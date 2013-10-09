@@ -31,6 +31,11 @@ heat-api-cloudwatch
 heat-engine
 '
 
+glance_services='
+glance-api
+glance-registry
+'
+
 restart_services() {
     for service in "$@" ; do
         echo ''
@@ -55,6 +60,9 @@ case $1 in
   ;;
   'heat')
     restart_services $heat_services
+  ;;
+  'glance')
+    restart_services $glance_services
   ;;
   *)
     echo "Wrong group name"

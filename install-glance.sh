@@ -2,23 +2,26 @@
 
 apt-get -y install sheepdog glance
 
+#-------------------------------------------------------------------------------
 
-cat << EOF > /tmp/glance.config
+cat << EOF > /etc/glance/glance-api.conf.changes
 [DEFAULT]
-sql_connection = mysql://glance:password@localhost/glance
+sql_connection = mysql://glance:swordfish@localhost/glance
 
 [keystone_authtoken]
 admin_tenant_name = service
 admin_user = glance
-admin_password = password
+admin_password = swordfish
 
 [paste_deploy]
 flavor=keystone
 EOF
 
-./merge-config.py /etc/glance/glance-api.conf /tmp/glance.config
-./merge-config.py /etc/glance/glance-registry.conf /tmp/glance.config
+#-------------------------------------------------------------------------------
 
-service glance-api restart && service glance-registry restart
+./merge-config.py /etc/glance/glance-api.conf /etc/glance/glance-api.conf.changes
+./merge-config.py /etc/glance/glance-registry.conf /etc/glance/glance-api.conf.changes
+
+./restart-os-services.sh glance
 
 glance-manage db_sync

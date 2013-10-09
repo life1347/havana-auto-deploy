@@ -12,7 +12,7 @@ apt-get install -y nova-api nova-cert nova-common nova-conductor \
 
 #-------------------------------------------------------------------------------
 
-cat << EOF > /tmp/api-paste.ini.part
+cat << EOF > /etc/nova/api-paste.ini.changes
 [filter:authtoken]
 admin_tenant_name = service
 admin_user = nova
@@ -21,7 +21,7 @@ EOF
 
 #-------------------------------------------------------------------------------
 
-cat << EOF > /tmp/nova.conf.part
+cat << EOF > /etc/nova/nova.conf.changes
 [DEFAULT]
 sql_connection=mysql://nova:swordfish@localhost/nova
 my_ip=10.10.10.10
@@ -65,5 +65,5 @@ EOF
 
 #-------------------------------------------------------------------------------
 
-./merge-config.py /etc/nova/api-paste.ini /tmp/api-paste.ini.part
-./merge-config.py /etc/nova/nova.conf /tmp/nova.conf.part
+./merge-config.py /etc/nova/api-paste.ini /etc/nova/api-paste.ini.changes
+./merge-config.py /etc/nova/nova.conf /etc/nova/nova.conf.changes

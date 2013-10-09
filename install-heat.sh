@@ -3,7 +3,9 @@
 apt-get -y install heat-api heat-api-cfn heat-api-cloudwatch \
     heat-common heat-engine python-heat python-heatclient
 
-cat << EOF > /tmp/heat-api-paste.ini.part
+#-------------------------------------------------------------------------------
+
+cat << EOF > /etc/heat/api-paste.ini.changes
 [filter:authtoken]
 auth_host = 127.0.0.1
 auth_port = 35357
@@ -14,15 +16,18 @@ admin_user = admin
 admin_password = swordfish
 EOF
 
+#-------------------------------------------------------------------------------
 
-cat << EOF > /tmp/heat.conf.part
+cat << EOF > /etc/heat/heat.conf.changes
 [DEFAULT]
 debug=True
 verbose=True
 log_dir=/var/log/heat
 EOF
 
-./merge-config.py /etc/heat/api-paste.ini /tmp/heat-api-paste.ini.part
-./merge-config.py /etc/heat/heat.conf /tmp/heat.conf.part
+#-------------------------------------------------------------------------------
+
+./merge-config.py /etc/heat/api-paste.ini /etc/heat/api-paste.ini.changes
+./merge-config.py /etc/heat/heat.conf /etc/heat/heat.conf.changes
 
 ./restart-os-services.sh heat

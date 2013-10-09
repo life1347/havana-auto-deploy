@@ -103,13 +103,13 @@ Configure the system
     ># apt-get install -y ntp
 ..
 
-Install Controller part
-=======================
+Common Services
+===============
 
 First, configure the **./openrc** file.
 
-Install MySQL
--------------
+MySQL
+-----
 
 **Scripted**
 
@@ -146,8 +146,8 @@ See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_co
     ># vgcreate cinder-volumes /dev/loop0
 ..
 
-Install RabbitMQ Server
------------------------
+RabbitMQ Server
+---------------
 
 **Scripted**
 
@@ -158,8 +158,13 @@ Install RabbitMQ Server
 
 **Manual**
 
-Install Keystone Service
-------------------------
+See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-rabbitmq
+
+Controller Part
+===============
+
+Keystone Service
+----------------
 
 **Scripted**
 
@@ -178,8 +183,8 @@ Install Keystone Service
 
 See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-keystone
 
-Install Image Service
----------------------
+Image Service
+-------------
 
 **Scripted**
 
@@ -197,13 +202,24 @@ Install Image Service
 
 See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-glance
 
-Install Network part
-====================
+Block Storage
+-------------
+
+**Manual**
+
+See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-cinder
+
+**Notes**
+
+* 
+
+Network part
+============
 
 
 
-Install Compute part
-====================
+Compute part
+============
 
 ::
 
@@ -217,16 +233,6 @@ Install Compute part
 Install Heat
 ------------
 
-* Install Heat
-
-::
-
-    apt-get -y install heat-api heat-api-cfn heat-api-cloudwatch \
-        heat-common heat-engine python-heat python-heatclient
-..
-
-* Configure /etc/heat/api-paste.ini
-
 **Scripted**
 
 ::
@@ -235,6 +241,16 @@ Install Heat
 ..
 
 **Manual**
+
+* Install Heat packages
+
+::
+
+    apt-get -y install heat-api heat-api-cfn heat-api-cloudwatch \
+        heat-common heat-engine python-heat python-heatclient
+..
+
+* Configure **/etc/heat/api-paste.ini**
 
 ::
 
@@ -256,7 +272,7 @@ Install Heat
      [filter:authpassword]
 ..
 
-* Configure /etc/heat/heat.conf
+* Configure **/etc/heat/heat.conf**
 
 ::
 
