@@ -22,7 +22,7 @@ Configure the system
 
 * Configure network in **/etc/network/interfaces**
 
-* Run the script 
+* Run the script
 
 ::
 
@@ -125,26 +125,9 @@ MySQL
 
 **Manual**
 
-See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-mysql
+See links below:
 
-::
-
-    ># dd if=/dev/zero of=/opt/cinder-volumes.img bs=100 count=100M
-    ># losetup /dev/loop0 /opt/cinder-columes.img
-..
-
-::
-
-    ># sfdisk /dev/loop0 << EOF
-    ,,8e,,
-    EOF
-..
-
-::
-
-    ># pvcreate /dev/loop0
-    ># vgcreate cinder-volumes /dev/loop0
-..
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-mysql
 
 RabbitMQ Server
 ---------------
@@ -158,7 +141,9 @@ RabbitMQ Server
 
 **Manual**
 
-See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-rabbitmq
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#controller-rabbitmq
 
 Controller Part
 ===============
@@ -181,7 +166,9 @@ Keystone Service
 
 **Manual**
 
-See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-keystone
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-keystone
 
 Image Service
 -------------
@@ -200,38 +187,60 @@ Image Service
 
 **Manual**
 
-See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-glance
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-glance
 
 Block Storage
 -------------
 
 **Manual**
 
-See http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-cinder
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-cinder
 
 **Notes**
 
-* 
-
-Network part
-============
-
-
-
-Compute part
-============
+* I use virtual device for block storage service. The steps below show required actions:
 
 ::
 
-    check the --libvirt-type if it is "kvm" then
-    change it to --libvirt-type=qemu in /etc/nova/nova-compute.conf
-    and reboot the machine
-    your bug will get resolved
+    ># dd if=/dev/zero of=/opt/cinder-volumes.img bs=100 count=100M
+    ># losetup /dev/loop0 /opt/cinder-columes.img
 ..
 
+::
 
-Install Heat
-------------
+    ># sfdisk /dev/loop0 << EOF
+    ,,8e,,
+    EOF
+..
+
+::
+
+    ># pvcreate /dev/loop0
+    ># vgcreate cinder-volumes /dev/loop0
+..
+
+Dashboard
+---------
+
+**Scripted**
+
+::
+
+    ./install-dashboard.sh
+..
+
+**Manual**
+
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-dashboard
+
+Heat
+----
 
 **Scripted**
 
@@ -299,6 +308,44 @@ Install Heat
      
      # Use syslog for logging. (boolean value)
      #use_syslog=false
+..
+
+Network part
+============
+
+**Scripted**
+
+::
+
+    ./install-neutron.sh
+..
+
+**Manual**
+
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-quantum
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_network.html#basic-install_network-services
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_compute.html#basic-install_compute-quantum
+
+Compute part
+============
+
+**Manual**
+
+See links below:
+
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_controller.html#basic-install_controller-nova
+* http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_compute.html#basic-install_compute-nova
+
+**Notes**
+
+::
+
+    check the --libvirt-type if it is "kvm" then
+    change it to --libvirt-type=qemu in /etc/nova/nova-compute.conf
+    and reboot the machine
+    your bug will get resolved
 ..
 
 Links
