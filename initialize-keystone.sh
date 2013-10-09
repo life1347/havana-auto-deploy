@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./openrc
+
 # Modify these variables as needed
 ADMIN_PASSWORD=${ADMIN_PASSWORD:-swordfish}
 SERVICE_PASSWORD=${SERVICE_PASSWORD:-$ADMIN_PASSWORD}

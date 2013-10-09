@@ -120,7 +120,7 @@ MySQL
 
 ::
 
-    ./create-mysql-db.sh
+    ./initialize-mysql.sh
 ..
 
 **Manual**
@@ -160,8 +160,8 @@ Keystone Service
 
 ::
 
-    source openrc
-    ./populate-keystone-data.sh
+    source ./openrc
+    ./initialize-keystone.sh
 ..
 
 **Manual**
@@ -182,7 +182,7 @@ Image Service
 
 ::
 
-    ./glance-import-image.sh
+    ./initialize-glance.sh
 ..
 
 **Manual**
@@ -247,6 +247,11 @@ Heat
 ::
 
     ./install-heat.sh
+..
+
+::
+
+    ./configure-heat.sh
 ..
 
 **Manual**
@@ -315,9 +320,20 @@ Network part
 
 **Scripted**
 
+* Install Neutron
+
 ::
 
     ./install-neutron.sh
+..
+
+* Configure OpenVSwitch: http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_network.html#basic-install_network-services
+
+* Configure Neutron
+
+::
+
+    ./configure-neutron.sh
 ..
 
 **Manual**
@@ -330,6 +346,18 @@ See links below:
 
 Compute part
 ============
+
+**Scripted**
+
+::
+
+    ./install-compute.sh
+..
+
+::
+
+    ./configure-compute.sh
+..
 
 **Manual**
 
