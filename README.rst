@@ -160,6 +160,11 @@ Keystone Service
 
 ::
 
+    ./configure-keystone.sh
+..
+
+::
+
     source ./openrc
     ./initialize-keystone.sh
 ..
@@ -178,6 +183,11 @@ Image Service
 ::
 
     ./install-glance.sh
+..
+
+::
+
+    ./configure-glance.sh
 ..
 
 ::

@@ -24,26 +24,3 @@ EOF
 
 pvcreate /dev/loop0
 vgcreate cinder-volumes /dev/loop0
-
-
-cat << EOF > /etc/cinder/cinder.conf.changes
-[DEFAULT]
-sql_connection = mysql://cinder:swordfish@localhost/cinder
-rabbit_password = guest
-EOF
-
-
-cat << EOF > /etc/cinder/api-paste.ini.changes
-admin_tenant_name = service
-admin_user = cinder
-admin_password = swordfish
-EOF
-
-
-./merge-config.py /etc/cinder/cinder.conf /etc/cinder/cinder.conf.changes
-./merge-config.py /etc/cinder/api-paste.ini /etc/cinder/api-paste.ini.changes
-
-
-cinder-manage db sync
-
-./restart-os-services.sh cinder

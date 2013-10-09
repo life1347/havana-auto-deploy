@@ -24,9 +24,9 @@ EOF
 
 #-------------------------------------------------------------------------------
 
-./merge-config.py /etc/heat/api-paste.ini /etc/heat/api-paste.ini.changes
+./merge-config.sh /etc/heat/api-paste.ini /etc/heat/api-paste.ini.changes
 
-./merge-config.py /etc/heat/heat.conf /etc/heat/heat.conf.changes
+./merge-config.sh /etc/heat/heat.conf /etc/heat/heat.conf.changes
 
 #-------------------------------------------------------------------------------
 
