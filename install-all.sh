@@ -32,7 +32,7 @@
 
 ./install-neutron.sh
 
-./conigure-neutron.sh
+./configure-neutron.sh
 
 ./install-compute.sh
 

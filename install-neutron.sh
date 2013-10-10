@@ -9,4 +9,4 @@ apt-get install --yes \
 service openvswitch-switch start
 
 ovs-vsctl add-br br-ex
-ovs-vscrl add-br br-int
+ovs-vsctl add-br br-int
