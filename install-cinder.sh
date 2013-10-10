@@ -1,7 +1,14 @@
 #!/bin/bash
 
-apt-get install --yes cinder-api cinder-scheduler cinder-volume iscsitarget \
-    open-iscsi iscsitarget-dkms python-cinderclient linux-headers-$(uname -r)
+apt-get install --yes \
+	cinder-api \
+	cinder-scheduler \
+	cinder-volume \
+	iscsitarget \
+    open-iscsi \
+    iscsitarget-dkms \
+    python-cinderclient \
+    linux-headers-$(uname -r)
 
 sed -i 's/false/true/g' /etc/default/iscsitarget
 
