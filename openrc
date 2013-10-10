@@ -2,6 +2,7 @@
 
 HOST_IP=10.10.10.10
 
+MYSQL_PASSWORD=swordfish
 
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin

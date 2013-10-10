@@ -1,24 +1,24 @@
 #!/bin/bash
 
-password='swordfish'
+source ./openrc
 
 echo ''
 echo 'Creating databases ...'
 echo ''
 
-mysql -u root -p <<EOF
+mysql -u root -p$MYSQL_PASSWORD <<EOF
 CREATE DATABASE nova;
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE DATABASE cinder;
-GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE DATABASE glance;
-GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE DATABASE keystone;
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE DATABASE quantum;
-GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'localhost' IDENTIFIED BY '$password';
-GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'10.10.10.9' IDENTIFIED BY '$password';
-GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'10.10.10.11' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON quantum.* TO 'quantum'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
+CREATE DATABASE heat;
+GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
 FLUSH PRIVILEGES;
 EOF
 
@@ -26,6 +26,6 @@ echo ''
 echo 'Getting list of databases ...'
 echo ''
 
-mysql -u root -p <<EOF
+mysql -u root -p$MYSQL_PASSWORD <<EOF
 show databases;
 EOF
