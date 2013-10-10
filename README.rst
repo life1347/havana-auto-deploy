@@ -52,19 +52,6 @@ Configure the system
     deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 ..
 
-* **SKIP THIS** Configure package pinning rules in **/etc/apt/preferences/local.pref**
-
-::
-
-    #Package: openvswitch-*
-    #Pin: release o=Ubuntu
-    #Pin-Priority: 501
-
-    #Package: novnc
-    #Pin: release o=Ubuntu
-    #Pin-Priority: 501
-..
-
 * Update
 
 ::
@@ -161,7 +148,7 @@ Keystone Service
 ::
 
     ./configure-keystone.sh
-..
+
 
 ::
 
@@ -204,6 +191,18 @@ See links below:
 Block Storage
 -------------
 
+**Scripted**
+
+::
+
+    ./install-cinder.sh
+..
+
+::
+
+    ./configure-cinder.sh
+..
+
 **Manual**
 
 See links below:
@@ -217,7 +216,7 @@ See links below:
 ::
 
     ># dd if=/dev/zero of=/opt/cinder-volumes.img bs=100 count=100M
-    ># losetup /dev/loop0 /opt/cinder-columes.img
+    ># losetup /dev/loop0 /opt/cinder-volumes.img
 ..
 
 ::
@@ -330,16 +329,12 @@ Network part
 
 **Scripted**
 
-* Install Neutron
-
 ::
 
     ./install-neutron.sh
 ..
 
-* Configure OpenVSwitch: http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_network.html#basic-install_network-services
-
-* Configure Neutron
+* Configure OpenVSwitch - http://docs.openstack.org/grizzly/basic-install/apt/content/basic-install_network.html#basic-install_network-services
 
 ::
 

@@ -8,7 +8,7 @@ deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/havana main
 
 # Public -proposed archive mimicking the SRU process for extended testing.
 # Packages should bake here for at least 7 days. 
-#deb  http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
+deb  http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/havana main
 EOF
 
 #cat << EOF > /etc/apt/preferences.d/local.pref

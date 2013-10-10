@@ -1,6 +1,6 @@
 #/bin/bash
 
-apt-get install -y rabbitmq-server
+apt-get install --yes rabbitmq-server
 
 #rabbitmqctl change_password guest swordfish
 

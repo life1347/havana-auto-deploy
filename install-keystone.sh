@@ -1,4 +1,4 @@
 #!/bin/bash
 
-apt-get install -y keystone python-keystone python-keystoneclient
+apt-get install --yes keystone python-keystone python-keystoneclient
 

@@ -20,7 +20,7 @@ MYSQL_PASSWORD=swordfish
 
 #
 KEYSTONE_REGION=RegionOne
-KEYSTONE_HOST=10.10.10.10
+KEYSTONE_HOST=$HOST_IP
 
 
 # Shortcut function to get a newly generated ID

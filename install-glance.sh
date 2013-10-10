@@ -1,4 +1,4 @@
 #!/bin/bash
 
-apt-get -y install sheepdog glance
+apt-get install --yes sheepdog glance
 

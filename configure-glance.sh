@@ -4,6 +4,8 @@
 
 cat << EOF > /etc/glance/glance-api.conf.changes
 [DEFAULT]
+debug = True
+verbose = True
 sql_connection = mysql://glance:swordfish@localhost/glance
 
 [keystone_authtoken]

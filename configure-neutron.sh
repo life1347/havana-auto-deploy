@@ -32,8 +32,8 @@ sql_connection = mysql://quantum:swordfish@localhost/quantum
 #tunnel_id_ranges = 1:1000
 #enable_tunneling = True
 #local_ip = 127.0.0.1
-#[securitygroup]
-#firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+[securitygroup]
+firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
 EOF
 
 #-------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ EOF
 
 #-------------------------------------------------------------------------------
 
-cat << EOF > /etc/quantum/metadata_agent.ini.changes
+cat << EOF > /etc/neutron/metadata_agent.ini.changes
 [DEFAULT]
 auth_url = http://127.0.0.1:35357/v2.0
 auth_region = RegionOne
@@ -80,7 +80,7 @@ EOF
 
 ./merge-config.sh /etc/neutron/dhcp_agent.ini /etc/neutron/dhcp_agent.ini.changes
 
-./merge-config.sh /etc/quantum/metadata_agent.ini /etc/quantum/metadata_agent.ini.changes
+./merge-config.sh /etc/neutron/metadata_agent.ini /etc/neutron/metadata_agent.ini.changes
 
 #-------------------------------------------------------------------------------
 

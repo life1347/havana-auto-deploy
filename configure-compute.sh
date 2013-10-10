@@ -71,3 +71,6 @@ EOF
 ./merge-config.sh /etc/nova/nova.conf /etc/nova/nova.conf.changes
 
 ./merge-config.sh /etc/nova/nova-compute.conf /etc/nova/nova-compute.conf.changes
+
+
+nova-manage db sync

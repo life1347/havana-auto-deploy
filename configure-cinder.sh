@@ -11,6 +11,7 @@ EOF
 #-------------------------------------------------------------------------------
 
 cat << EOF > /etc/cinder/api-paste.ini.changes
+[filter:authtoken]
 admin_tenant_name = service
 admin_user = cinder
 admin_password = swordfish
