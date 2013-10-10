@@ -17,9 +17,9 @@ EOF
 
 cat << EOF > /etc/heat/heat.conf.changes
 [DEFAULT]
-debug=True
-verbose=True
-log_dir=/var/log/heat
+debug = True
+verbose = True
+log_dir = /var/log/heat
 EOF
 
 #-------------------------------------------------------------------------------

@@ -12,7 +12,7 @@ admin_user = glance
 admin_password = swordfish
 
 [paste_deploy]
-flavor=keystone
+flavor = keystone
 EOF
 
 #-------------------------------------------------------------------------------

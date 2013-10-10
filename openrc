@@ -1,8 +1,12 @@
 #!/bin/bash
 
+HOST_IP=10.10.10.10
+
+
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=swordfish
 export OS_AUTH_URL="http://localhost:5000/v2.0/"
 export OS_SERVICE_ENDPOINT="http://localhost:35357/v2.0"
 export OS_SERVICE_TOKEN=swordfish
+
