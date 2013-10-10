@@ -41,7 +41,7 @@ EOF
 cat << EOF > /etc/neutron/dhcp_agent.ini.changes
 [DEFAULT]
 debug = True
-ovs_use_veth = True
+#ovs_use_veth = True
 interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
 dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
 use_namespaces = True
@@ -59,7 +59,7 @@ auth_region = RegionOne
 admin_tenant_name = service
 admin_user = quantum
 admin_password = swordfish
-nova_metadata_ip = $HOST_IP
+nova_metadata_ip = 127.0.0.1
 nova_metadata_port = 8775
 metadata_proxy_shared_secret = swordfish
 EOF
@@ -72,6 +72,18 @@ EOF
 
 #-------------------------------------------------------------------------------
 
+cat << EOF > /etc/neutron/l3_agent.ini.changes
+[DEFAULT]
+debug = True
+#ovs_use_veth = True
+interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
+use_namespaces = True
+external_network_bridge = br-ex
+metadata_port = 9697
+enable_metadata_proxy = True
+EOF
+
+#-------------------------------------------------------------------------------
 
 ./merge-config.sh /etc/neutron/neutron.conf /etc/neutron/neutron.conf.changes
 
@@ -79,6 +91,8 @@ EOF
     /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 
 ./merge-config.sh /etc/neutron/dhcp_agent.ini /etc/neutron/dhcp_agent.ini.changes
+
+./merge-config.sh /etc/neutron/l3_agent.ini /etc/neutron/l3_agent.ini.changes
 
 ./merge-config.sh /etc/neutron/metadata_agent.ini /etc/neutron/metadata_agent.ini.changes
 

@@ -1,6 +1,8 @@
 Havana From Packages
 ####################
 
+**NOTE: This guide describes installation of SINGLE NODE OPENSTACK.**
+
 ::
 
     git clone https://github.com/dmitry-teselkin/havana-from-packages.git
