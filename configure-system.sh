@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get -y install ubuntu-cloud-keyring
+apt-get install --yes ubuntu-cloud-keyring
 
 cat << EOF > /etc/apt/sources.list.d/cloud-archive.list
 # The primary updates archive that users should be using
@@ -24,7 +24,12 @@ EOF
 apt-get update
 
 
-apt-get -y install python-dev python-setuptools
+apt-get install --yes \
+	python-dev \
+	python-setuptools \
+	htop
+
+
 easy_install pip
 
 
