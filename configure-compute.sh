@@ -59,9 +59,16 @@ EOF
 
 #-------------------------------------------------------------------------------
 
+kvm-ok
+if [ $? -eq 0 ] ; then
+    libvirt_type='kvm'
+else
+    libvirt_type='qemu'
+fi
+
 cat << EOF > /etc/nova/nova-compute.conf.changes
 [DEFAULT]
-libvirt_type = qemu
+libvirt_type = $libvirt_type
 EOF
 
 #-------------------------------------------------------------------------------

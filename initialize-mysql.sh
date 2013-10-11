@@ -3,6 +3,19 @@
 source ./openrc
 
 echo ''
+echo 'Dropping databases ...'
+echo ''
+
+mysql -u root -p$MYSQL_PASSWORD <<EOF
+DROP DATABASE nova;
+DROP DATABASE cinder;
+DROP DATABASE glance;
+DROP DATABASE keystone;
+DROP DATABASE quantum;
+DROP DATABASE heat;
+EOF
+
+echo ''
 echo 'Creating databases ...'
 echo ''
 

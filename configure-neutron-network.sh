@@ -1,27 +1,42 @@
 #!/bin/bash
 
-TENANT_NAME="demo"
-TENANT_NETWORK_NAME="demo-net"
-TENANT_SUBNET_NAME="${TENANT_NETWORK_NAME}-subnet"
-TENANT_ROUTER_NAME="demo-router"
-FIXED_RANGE="10.5.5.0/24"
-NETWORK_GATEWAY="10.5.5.1"
+source ./openrc
 
-TENANT_ID=$(keystone tenant-list | grep " $TENANT_NAME " | awk '{print $2}')
+TENANT_NAME="service"
+TENANT_NETWORK_NAME="public"
+TENANT_SUBNET_NAME="${TENANT_NETWORK_NAME}-subnet"
+TENANT_ROUTER_NAME="${TENANT_NETWORK_NAME}-router"
+
+NETWORK_RANGE="***.***.***.***/***"
+NETWORK_GATEWAY="***.***.***.***"
+
+TENANT_ID=$(keystone tenant-list | awk "/$TENANT_NAME/ {print \$2}")
+
+echo "TENANT_ID = '$TENANT_ID'"
 
 TENANT_NET_ID=$(neutron net-create \
   --tenant_id $TENANT_ID $TENANT_NETWORK_NAME \
-  --provider:network_type gre \
-  --provider:segmentation_id 1 | grep " id " | awk '{print $4}')
+  --provider:network_type flat \
+  --provider:physical_network physnet1 \
+  --router:external=True | awk "/ id / {print \$4}")
+
+echo "TENANT_NET_ID = '$TENANT_NET_ID'"
 
 TENANT_SUBNET_ID=$(neutron subnet-create \
+  $TENANT_NET_ID $NETWORK_RANGE \
   --tenant_id $TENANT_ID \
   --ip_version 4 \
-  --name $TENANT_SUBNET_NAME $TENANT_NET_ID $FIXED_RANGE \
+  --name $TENANT_SUBNET_NAME \
   --gateway $NETWORK_GATEWAY \
-  --dns_nameservers list=true 8.8.8.8 | grep " id " | awk '{print $4}')
+  --allocation_pool start=***.***.***.***,end=***.***.***.*** \
+  --enable_dhcp False | awk "/ id / {print \$4}")
+
+echo "TENANT_SUBNET_ID = '$TENANT_SUBNET_ID'"
 
 ROUTER_ID=$(neutron router-create \
-  --tenant_id $TENANT_ID $TENANT_ROUTER_NAME | grep " id " | awk '{print $4}')
+  --tenant_id $TENANT_ID \
+  $TENANT_ROUTER_NAME | awk "/ id / {print \$4}")
 
-neutron router-interface-add $ROUTER_ID $TENANT_SUBNET_ID
+echo "ROUTER_ID = '$ROUTER_ID'"
+
+neutron router-gateway-set $ROUTER_ID $TENANT_NET_ID

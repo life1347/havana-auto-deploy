@@ -28,6 +28,8 @@ cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
 sql_connection = mysql://quantum:swordfish@localhost/quantum
 [ovs]
+network_vlan_ranges = physnet1
+bridge_mappings = physnet1:br-ex
 #tenant_network_type = gre
 #tunnel_id_ranges = 1:1000
 #enable_tunneling = True
