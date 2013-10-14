@@ -388,8 +388,8 @@ Links
 
 * https://wiki.ubuntu.com/ServerTeam/CloudArchive
 
-Bugs
-====
+Known Issues
+============
 
 * https://ask.openstack.org/en/question/4222/horizon-console-displays-blank-screen-with-message-novnc-ready-native-websockets-canvas-rendering/
-* https://review.openstack.org/#/c/48749/2/heat/engine/resources/neutron/port.py
+* https://bugs.launchpad.net/horizon/+bug/1235053
