@@ -20,6 +20,8 @@ admin_user = quantum
 admin_password = swordfish
 [database]
 connection = mysql://quantum:swordfish@localhost/quantum
+[quotas]
+quota_driver = neutron.db.quota_db.DbQuotaDriver
 EOF
 
 #-------------------------------------------------------------------------------
