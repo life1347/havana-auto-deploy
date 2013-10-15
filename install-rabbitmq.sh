@@ -6,9 +6,9 @@ apt-get install --yes rabbitmq-server
 
 /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 
-cat << EOF >> /etc/rabbitmq/rabbitmq.conf.d/rabbitmq-node-ip-address
-RABBITMQ_NODE_IP_ADDRESS=0.0.0.0
-EOF
+#cat << EOF >> /etc/rabbitmq/rabbitmq.conf.d/rabbitmq-node-ip-address
+#RABBITMQ_NODE_IP_ADDRESS=0.0.0.0
+#EOF
 
 service rabbitmq-server restart
 
