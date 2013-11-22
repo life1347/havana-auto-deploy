@@ -8,18 +8,26 @@ cat << EOF > /etc/neutron/neutron.conf.changes
 [DEFAULT]
 debug = True
 verbose = True
+
 bind_host = 0.0.0.0
 bind_port = 9696
+
+allow_overlapping_ips = True
+
 api_paste_config = api-paste.ini
+
 rabbit_host = 127.0.0.1
 rabbit_userid = guest
 rabbit_password = guest
+
 [keystone_authtoken]
 admin_tenant_name = service
 admin_user = quantum
 admin_password = swordfish
+
 [database]
 connection = mysql://quantum:swordfish@localhost/quantum
+
 [quotas]
 quota_driver = neutron.db.quota_db.DbQuotaDriver
 EOF
@@ -29,6 +37,7 @@ EOF
 cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
 sql_connection = mysql://quantum:swordfish@localhost/quantum
+
 [ovs]
 network_vlan_ranges = physnet1
 bridge_mappings = physnet1:br-ex
@@ -36,6 +45,7 @@ bridge_mappings = physnet1:br-ex
 #tunnel_id_ranges = 1:1000
 #enable_tunneling = True
 #local_ip = 127.0.0.1
+
 [securitygroup]
 firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
 EOF
