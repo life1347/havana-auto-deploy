@@ -61,7 +61,7 @@ novnc_enabled = True
 novncproxy_port = 6080
 vncserver_listen = 0.0.0.0
 vncserver_proxyclient_address = $HOST_IP
-novncproxy_base_url = http://HOST_IP_ETH1:6080/vnc_auto.html
+novncproxy_base_url = http://$HOST_IP_ETH1:6080/vnc_auto.html
 EOF
 
 #-------------------------------------------------------------------------------
