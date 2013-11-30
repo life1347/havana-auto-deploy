@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 echo ''
 echo 'Dropping databases ...'

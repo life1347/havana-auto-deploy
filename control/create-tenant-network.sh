@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 router_name='public-router'
 tenant_name='demo'

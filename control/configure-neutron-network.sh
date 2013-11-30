@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 TENANT_NAME="service"
 TENANT_NETWORK_NAME="public"

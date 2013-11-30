@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 # Modify these variables as needed
 ADMIN_PASSWORD=${ADMIN_PASSWORD:-swordfish}

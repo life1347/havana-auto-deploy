@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 mysql -uroot -p$MYSQL_PASSWORD << EOF
 drop database neutron;

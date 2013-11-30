@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_PASSWORD"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD"
