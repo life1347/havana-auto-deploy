@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./configure-system.sh
+../configure-system.sh
 
 ./install-neutron.sh
 

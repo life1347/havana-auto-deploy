@@ -10,8 +10,7 @@ apt-get install --yes \
   python-novaclient \
   nova-consoleauth \
   novnc \
-  nova-novncproxy \
-  nova-compute-kvm
+  nova-novncproxy
 
 
 pip install --upgrade websockify

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./openrc
+
 apt-get install --yes ubuntu-cloud-keyring
 
 cat << EOF > /etc/apt/sources.list.d/cloud-archive.list
@@ -44,6 +46,10 @@ net.ipv4.conf.all.forwarding = 1
 net.ipv4.conf.all.rp_filter = 0
 net.ipv4.conf.default.rp_filter = 0
 EOF
+
+echo "$HOST_IP control" >> /etc/hosts
+echo "$NETWORK_IP network" >> /etc/hosts
+echo "$COMPUTE_IP compute" >> /etc/hosts
 
 /etc/init.d/networking restart
 
