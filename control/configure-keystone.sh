@@ -1,15 +1,17 @@
 #!/bin/bash
 
+source ./openrc
+
 #-------------------------------------------------------------------------------
 
 cat << EOF > /etc/keystone/keystone.conf.changes
 [DEFAULT]
 admin_token = swordfish
-debug = True
-verbose = True
+debug = $DEBUG_OPEN
+verbose = $VERBOSE_OPEN
 
 [sql]
-connection = mysql://keystone:swordfish@localhost/keystone
+connection = mysql://keystone:swordfish@$HOST_IP/keystone
 EOF
 
 #-------------------------------------------------------------------------------

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+source ./openrc
+
 #-------------------------------------------------------------------------------
 
 cat << EOF > /etc/glance/glance-api.conf.changes
 [DEFAULT]
-debug = True
-verbose = True
-sql_connection = mysql://glance:swordfish@localhost/glance
+debug = $DEBUG_OPEN
+verbose = $VERBOSE_OPEN
+sql_connection = mysql://glance:swordfish@$HOST_IP/glance
 
 [keystone_authtoken]
 admin_tenant_name = service

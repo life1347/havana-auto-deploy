@@ -8,7 +8,7 @@ SERVICE_PASSWORD=${SERVICE_PASSWORD:-$ADMIN_PASSWORD}
 DEMO_PASSWORD=${DEMO_PASSWORD:-$ADMIN_PASSWORD}
 
 export OS_SERVICE_TOKEN="swordfish"
-export OS_SERVICE_ENDPOINT="http://localhost:35357/v2.0"
+export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
 
 SERVICE_TENANT_NAME=${SERVICE_TENANT_NAME:-service}
 
@@ -72,10 +72,10 @@ GLANCE_USER=$(keystone user-create \
   --email glance@domain.com | grep " id " | get_field 2)
 
 QUANTUM_USER=$(keystone user-create \
-  --name quantum \
+  --name neutron \
   --pass "$SERVICE_PASSWORD" \
   --tenant-id $SERVICE_TENANT \
-  --email quantum@domain.com | grep " id " | get_field 2)
+  --email neutron@domain.com | grep " id " | get_field 2)
 
 CINDER_USER=$(keystone user-create \
   --name cinder \
@@ -123,7 +123,7 @@ EC2_SERVICE=$(keystone service-create \
   --description 'OpenStack EC2 service' | grep " id " | get_field 2)
 
 NETWORK_SERVICE=$(keystone service-create \
-  --name quantum \
+  --name neutron \
   --type network \
   --description 'OpenStack Networking service' | grep " id " | get_field 2)
 

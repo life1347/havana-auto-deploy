@@ -6,8 +6,8 @@ source ./openrc
 
 cat << EOF > /etc/neutron/neutron.conf.changes
 [DEFAULT]
-debug = True
-verbose = True
+debug = $DEBUG_OPEN
+verbose = $VERBOSE_OPEN
 
 bind_host = 0.0.0.0
 bind_port = 9696
@@ -16,7 +16,7 @@ allow_overlapping_ips = True
 
 api_paste_config = api-paste.ini
 
-rabbit_host = 127.0.0.1
+rabbit_host = $HOST_IP
 rabbit_userid = guest
 rabbit_password = guest
 
@@ -26,7 +26,7 @@ admin_user = quantum
 admin_password = swordfish
 
 [database]
-connection = mysql://quantum:swordfish@localhost/quantum
+connection = mysql://quantum:swordfish@$HOST_IP/quantum
 
 [quotas]
 quota_driver = neutron.db.quota_db.DbQuotaDriver
@@ -36,15 +36,15 @@ EOF
 
 cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
-sql_connection = mysql://quantum:swordfish@localhost/quantum
+sql_connection = mysql://quantum:swordfish@$HOST_IP/quantum
 
 [ovs]
-network_vlan_ranges = physnet1
-bridge_mappings = physnet1:br-ex
-#tenant_network_type = gre
-#tunnel_id_ranges = 1:1000
-#enable_tunneling = True
-#local_ip = 127.0.0.1
+tenant_network_type = gre
+tunnel_id_ranges = 1:1000
+integration_bridge = br-int
+tunnel_bridge = br-tun
+local_ip = $NETWORK_IP
+enable_tunneling = True
 
 [securitygroup]
 firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
@@ -54,7 +54,7 @@ EOF
 
 cat << EOF > /etc/neutron/dhcp_agent.ini.changes
 [DEFAULT]
-debug = True
+debug = $DEBUG_OPEN
 #ovs_use_veth = True
 interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
 dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
@@ -68,12 +68,12 @@ EOF
 
 cat << EOF > /etc/neutron/metadata_agent.ini.changes
 [DEFAULT]
-auth_url = http://127.0.0.1:35357/v2.0
+auth_url = http://$HOST_IP:35357/v2.0
 auth_region = RegionOne
 admin_tenant_name = service
 admin_user = quantum
 admin_password = swordfish
-nova_metadata_ip = 127.0.0.1
+nova_metadata_ip = $HOST_IP
 nova_metadata_port = 8775
 metadata_proxy_shared_secret = swordfish
 EOF
@@ -88,7 +88,7 @@ EOF
 
 cat << EOF > /etc/neutron/l3_agent.ini.changes
 [DEFAULT]
-debug = True
+debug = $DEBUG_OPEN
 #ovs_use_veth = True
 interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
 use_namespaces = True

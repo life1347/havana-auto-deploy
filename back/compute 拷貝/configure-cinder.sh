@@ -1,10 +1,12 @@
 #!/bin/bash
 
+source ./openrc
+
 #-------------------------------------------------------------------------------
 
 cat << EOF > /etc/cinder/cinder.conf.changes
 [DEFAULT]
-sql_connection = mysql://cinder:swordfish@localhost/cinder
+sql_connection = mysql://cinder:swordfish@$HOST_IP/cinder
 rabbit_password = guest
 EOF
 

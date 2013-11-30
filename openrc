@@ -1,13 +1,18 @@
 #!/bin/bash
 
-HOST_IP=10.10.10.10
+HOST_IP=10.211.55.54
+NETWORK_IP=xxxxxx
+COMPUTE_IP=xxxxxx
 
 MYSQL_PASSWORD=swordfish
+
+DEBUG_OPEN=True
+
+VERBOSE_OPEN=True
 
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=swordfish
-export OS_AUTH_URL="http://localhost:5000/v2.0/"
-export OS_SERVICE_ENDPOINT="http://localhost:35357/v2.0"
+export OS_AUTH_URL="http://10.211.55.54:5000/v2.0/"
+export OS_SERVICE_ENDPOINT="http://10.211.55.54:35357/v2.0"
 export OS_SERVICE_TOKEN=swordfish
-
