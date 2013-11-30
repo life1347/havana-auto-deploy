@@ -24,6 +24,7 @@ cat << EOF > /etc/nova/nova.conf.changes
 [DEFAULT]
 sql_connection = mysql://nova:swordfish@$HOST_IP/nova
 my_ip = $COMPUTE_IP
+rabbit_host = $HOST_IP
 rabbit_password = guest
 auth_strategy = keystone
 
