@@ -46,7 +46,7 @@ tenant_network_type = gre
 tunnel_id_ranges = 1:1000
 integration_bridge = br-int
 tunnel_bridge = br-tun
-local_ip = $NETWORK_IP
+local_ip = $NETWORK_IP_ETH1
 enable_tunneling = True
 
 [securitygroup]

@@ -42,12 +42,11 @@ cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 sql_connection = mysql://neutron:swordfish@$HOST_IP/neutron
 
 [ovs]
-[ovs]
 tenant_network_type = gre
 tunnel_id_ranges = 1:1000
 integration_bridge = br-int
 tunnel_bridge = br-tun
-local_ip = $COMPUTE_IP
+local_ip = $COMPUTE_IP_ETH1
 enable_tunneling = True
 
 [securitygroup]

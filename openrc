@@ -1,8 +1,12 @@
 #!/bin/bash
 
 HOST_IP=10.211.55.54
+HOST_IP_ETH1=10.211.55.54
 NETWORK_IP=xxxxxx
+NETWORK_IP_ETH1=xxxxxx
+NETWORK_IP_ETH2=xxxxxx
 COMPUTE_IP=xxxxxx
+COMPUTE_IP_ETH1=xxxxxx
 
 MYSQL_PASSWORD=swordfish
 
@@ -13,6 +17,6 @@ VERBOSE_OPEN=True
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=swordfish
-export OS_AUTH_URL="http://10.211.55.54:5000/v2.0/"
+export OS_AUTH_URL="http://Control-eth1:5000/v2.0/"
 export OS_SERVICE_ENDPOINT="http://10.211.55.54:35357/v2.0"
 export OS_SERVICE_TOKEN=swordfish
