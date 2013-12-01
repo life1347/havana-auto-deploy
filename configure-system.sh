@@ -51,7 +51,7 @@ echo "$HOST_IP control" >> /etc/hosts
 echo "$NETWORK_IP network" >> /etc/hosts
 echo "$COMPUTE_IP compute" >> /etc/hosts
 
-sed -i "s/ubuntu/$HOSTNAME/g"
+sed -i "s/ubuntu/$HOSTNAME/g" /etc/hostname
 
 /etc/init.d/networking restart
 
