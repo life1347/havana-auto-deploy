@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./openrc
+source ../openrc
 
 apt-get install --yes ubuntu-cloud-keyring
 
@@ -49,11 +49,12 @@ EOF
 
 echo "$HOST_IP control" >> /etc/hosts
 echo "$NETWORK_IP network" >> /etc/hosts
-echo "$COMPUTE_IP compute" >> /etc/hosts
+echo "$COMPUTE_IP compute1" >> /etc/hosts
 
 hostname $HOSTNAME
 
 sed -i "s/ubuntu/$HOSTNAME/g" /etc/hostname
+sed -i "s/ubuntu/$HOSTNAME/g" /etc/hosts
 
 /etc/init.d/networking restart
 

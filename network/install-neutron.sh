@@ -2,7 +2,7 @@
 
 apt-get install --yes \
 	openvswitch-switch \
-    openvswitch-datapath-dkms
+    openvswitch-datapath-dkms \
     neutron-server \
 	neutron-plugin-openvswitch-agent \
     neutron-dhcp-agent \
