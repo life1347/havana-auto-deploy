@@ -1,12 +1,13 @@
 #!/bin/bash
 
 apt-get install --yes \
+	openvswitch-switch \
+    openvswitch-datapath-dkms
 	neutron-plugin-openvswitch-agent \
     neutron-dhcp-agent \
     neutron-l3-agent \
-    neutron-metadata-agent \
-    openvswitch-switch \
-    openvswitch-datapath-dkms
+    neutron-metadata-agent
+    
 
 service openvswitch-switch start
 

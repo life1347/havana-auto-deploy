@@ -1,9 +1,9 @@
 #!/bin/bash
 
 apt-get install --yes \
-	neutron-plugin-openvswitch-agent \
     openvswitch-switch \
-    openvswitch-datapath-dkms
+    openvswitch-datapath-dkms \
+    neutron-plugin-openvswitch-agent
 
 service openvswitch-switch start
 
