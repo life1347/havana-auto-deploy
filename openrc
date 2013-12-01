@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HOSTNAME=
+
 HOST_IP=10.211.55.54
 HOST_IP_ETH1=10.211.55.54
 NETWORK_IP=xxxxxx
@@ -20,3 +22,20 @@ export OS_PASSWORD=swordfish
 export OS_AUTH_URL="http://Control-eth1:5000/v2.0/"
 export OS_SERVICE_ENDPOINT="http://10.211.55.54:35357/v2.0"
 export OS_SERVICE_TOKEN=swordfish
+
+# Node Mac & IP
+# 
+# control
+# 00:1C:42:1A:DC:6E  10.211.55.54
+# 00:1C:42:32:04:85  10.211.55.56
+# 00:1C:42:8B:68:85  10.211.55.55
+
+# network
+# 00:1C:42:25:39:96  10.211.55.60
+# 00:1C:42:6B:54:98  10.211.55.59
+# 00:1C:42:E1:AB:E2  10.211.55.61
+
+# compute1
+# 00:1C:42:29:8C:D2  10.211.55.58
+# 00:1C:42:64:2C:10  10.211.55.62
+# 00:1C:42:BB:AF:24  10.211.55.57

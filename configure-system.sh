@@ -51,6 +51,8 @@ echo "$HOST_IP control" >> /etc/hosts
 echo "$NETWORK_IP network" >> /etc/hosts
 echo "$COMPUTE_IP compute" >> /etc/hosts
 
+sed -i "s/ubuntu/$HOSTNAME/g"
+
 /etc/init.d/networking restart
 
 sysctl -e -p /etc/sysctl.conf
