@@ -3,12 +3,12 @@
 apt-get install --yes \
 	openvswitch-switch \
     openvswitch-datapath-dkms
+    neutron-server \
 	neutron-plugin-openvswitch-agent \
     neutron-dhcp-agent \
     neutron-l3-agent \
     neutron-metadata-agent
     
-
 service openvswitch-switch start
 
 ovs-vsctl add-br br-ex
