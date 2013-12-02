@@ -30,7 +30,7 @@ DEFAULT_DNS_SERVER=8.8.8.8
 #	echo 'down ip link set $IFACE promisc off' >> /etc/network/interfaces
 #	echo 'down ifconfig $IFACE down' >> /etc/network/interfaces	
 #
-#	IN THE END /etc/network/interfaces setting for eth2 SHOULD BE LIKE THE FOLLOWING
+#	IN THE END /etc/network/interfaces SETTING FOR eth2 SHOULD BE LIKE THE FOLLOWING
 #	
 #	iface eth2 inet manual
 #	up ifconfig $IFACE 0.0.0.0 up
