@@ -1,28 +1,42 @@
 #!/bin/bash
 
-HOSTNAME=
+#host name should be same as following node host name
+HOST_NAME=
 
+#default nodes hosts name
+CONTROL_HOST_NAME=control
+NETWORK_HOST_NAME=network
+CONTROL_HOST_NAME=compute1
+
+#default dns server, may use another dns server as default server.
 DEFAULT_DNS_SERVER=8.8.8.8
 
+#control ip
 HOST_IP=10.211.55.54
 HOST_IP_ETH1=10.211.55.56
+
+#network ip
 NETWORK_IP=10.211.55.59
 NETWORK_IP_ETH1=10.211.55.60
 NETWORK_IP_ETH2=10.211.55.61
+
+#compute1 ip
 COMPUTE_IP=10.211.55.62
 COMPUTE_IP_ETH1=10.211.55.57
 
+#database password
 MYSQL_PASSWORD=swordfish
 
+#enable debug mode
 DEBUG_OPEN=True
-
 VERBOSE_OPEN=True
 
+#enviorment variables for keystone auth
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=swordfish
-export OS_AUTH_URL="http://10.211.55.56:5000/v2.0/"
-export OS_SERVICE_ENDPOINT="http://10.211.55.54:35357/v2.0"
+export OS_AUTH_URL="http://$HOST_IP_ETH1:5000/v2.0/"
+export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
 export OS_SERVICE_TOKEN=swordfish
 
 # Node Mac & IP

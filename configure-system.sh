@@ -40,21 +40,20 @@ apt-get -y install ntp
 
 cat << EOF >> /etc/sysctl.conf
 
-
 net.ipv4.ip_forward = 1
 net.ipv4.conf.all.forwarding = 1
 net.ipv4.conf.all.rp_filter = 0
 net.ipv4.conf.default.rp_filter = 0
 EOF
 
-echo "$HOST_IP control" >> /etc/hosts
-echo "$NETWORK_IP network" >> /etc/hosts
-echo "$COMPUTE_IP compute1" >> /etc/hosts
+echo "$HOST_IP $CONTROL_HOST_NAME" >> /etc/hosts
+echo "$NETWORK_IP $NETWORK_HOST_NAME" >> /etc/hosts
+echo "$COMPUTE_IP $CONTROL_HOST_NAME" >> /etc/hosts
 
-hostname $HOSTNAME
+sed -i "s/$HOSTNAME/$HOST_NAME/g" /etc/hostname
+sed -i "s/$HOSTNAME/$HOST_NAME/g" /etc/hosts
 
-sed -i "s/ubuntu/$HOSTNAME/g" /etc/hostname
-sed -i "s/ubuntu/$HOSTNAME/g" /etc/hosts
+hostname $HOST_NAME
 
 /etc/init.d/networking restart
 
