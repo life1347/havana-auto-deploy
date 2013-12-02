@@ -64,6 +64,7 @@ dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
 use_namespaces = True
 enable_isolated_metadata = True
 enable_metadata_network = True
+dnsmasq_dns_server = $DEFAULT_DNS_SERVER
 #dnsmasq_config_file = /etc/neutron/dnsmasq-neutron.conf
 EOF
 
