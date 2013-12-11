@@ -1,17 +1,16 @@
 Havana Multi Node Deploy scripts
 ####################
 
+**NOTE: This guide describes installation of MULTI NODE OPENSTACK.**
+
 This repo is forked from dmitry-teselkin's havana-from-packages, and I changed it to multi node auto-deploy scripts.
 
 If meet problems during deployment, it welcome to ask for any help. 
-
-**NOTE: This guide describes installation of MULTI NODE OPENSTACK.**
 
 ::
 
     git clone https://github.com/life1347/havana-from-packages.git
 ..
-
 
 
 Prerequisites
