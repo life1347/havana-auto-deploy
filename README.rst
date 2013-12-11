@@ -9,7 +9,7 @@ If meet problems during deployment, it welcome to ask for any help.
 
 ::
 
-    git clone https://github.com/life1347/havana-from-packages.git
+    git clone https://github.com/life1347/havana-multinode-auto-deploy.git
 ..
 
 
