@@ -23,9 +23,8 @@ Configure the system
 ====================
 
 **Configured**
-
-* set up nodes information in openrc(EVERY node should set up before installaion start)
 ::
+    # set up nodes information in openrc(EVERY node should set up before installaion start)
     $ cd havana-from-packages; vim openrc
 ..
 
@@ -51,6 +50,9 @@ Installation
     $ cd ./compute; ./deploy-compute.sh
 ..
 
-YAHOO!!!!!!!!!
+HELLO WORLD, YAHOO!!!!!!!!!
 ==============
-YOU OWN OPENSTACK IS THERE!
+**Reference**
+
+* https://github.com/dmitry-teselkin/havana-from-packages
+* http://docs.openstack.org/havana/install-guide/install/apt/content/
