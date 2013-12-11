@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#host name should be same as following node host name
+#host name should be same as the following default host name
 HOST_NAME=
 
 #default nodes hosts name
