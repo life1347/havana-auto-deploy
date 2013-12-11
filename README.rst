@@ -17,6 +17,9 @@ Prerequisites
 =============
 
 * Ubuntu Server 12.04.3 x64 with 3.2 kernel 
+* control node - 2 network interfaces
+* network node - 3 network interfaces
+* compute node - 2 network interfaces
 
 Configure the system
 ====================
