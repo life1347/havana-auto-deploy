@@ -23,7 +23,7 @@ Configure the system
 
 **Configured**
 ::
-    # set up nodes information in openrc(EVERY node should set up before installaion start)
+    # set up nodes information in openrc(EVERY node should set up before deployment)
     $ cd havana-from-packages; vim openrc
 ..
 
