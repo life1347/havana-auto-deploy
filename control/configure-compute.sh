@@ -65,7 +65,7 @@ novncproxy_base_url = http://$HOST_IP_ETH1:6080/vnc_auto.html
 EOF
 
 #-------------------------------------------------------------------------------
-
+apt-get install cpu-checker
 kvm-ok
 if [ $? -eq 0 ] ; then
     libvirt_type='kvm'
