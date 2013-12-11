@@ -37,3 +37,5 @@
 ./install-compute.sh
 
 ./configure-compute.sh
+
+reboot
