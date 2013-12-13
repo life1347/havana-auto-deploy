@@ -52,6 +52,8 @@ Installation
     $ cd ./compute; ./deploy-compute.sh
 ..
 
+**NOTE: creds(credentials), which contains auth information, would be created at same level of directory of openrc**
+
 HELLO WORLD, YAHOO!!!!!!!!!
 ==============
 **Reference**
