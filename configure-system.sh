@@ -37,7 +37,7 @@ easy_install pip
 
 apt-get -y install ntp
 
-touch ./creds
+touch ../creds
 echo "export OS_TENANT_NAME=admin" >> ./creds
 echo "export OS_USERNAME=admin" >> ./creds
 echo "export OS_PASSWORD=swordfish" >> ./creds
