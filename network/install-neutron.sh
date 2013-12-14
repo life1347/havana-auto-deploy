@@ -9,7 +9,7 @@ apt-get install --yes \
     neutron-l3-agent \
     neutron-metadata-agent
     
-service openvswitch-switch start
+service openvswitch-switch restart
 
 ovs-vsctl add-br br-ex
 ovs-vsctl add-br br-int

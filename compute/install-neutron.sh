@@ -5,6 +5,6 @@ apt-get install --yes \
     openvswitch-datapath-dkms \
     neutron-plugin-openvswitch-agent
 
-service openvswitch-switch start
+service openvswitch-switch restart
 
 ovs-vsctl add-br br-int
