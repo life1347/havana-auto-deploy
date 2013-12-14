@@ -6,7 +6,7 @@ HOST_NAME=
 #default nodes hosts name
 CONTROL_HOST_NAME=control
 NETWORK_HOST_NAME=network
-CONTROL_HOST_NAME=compute1
+COMPUTE_HOST_NAME=compute1
 
 #default dns server, may use another dns server as default server.
 DEFAULT_DNS_SERVER=8.8.8.8

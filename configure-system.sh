@@ -57,7 +57,7 @@ EOF
 
 echo "$HOST_IP $CONTROL_HOST_NAME" >> /etc/hosts
 echo "$NETWORK_IP $NETWORK_HOST_NAME" >> /etc/hosts
-echo "$COMPUTE_IP $CONTROL_HOST_NAME" >> /etc/hosts
+echo "$COMPUTE_IP $COMPUTE_HOST_NAME" >> /etc/hosts
 
 sed -i "s/$HOSTNAME/$HOST_NAME/g" /etc/hostname
 sed -i "s/$HOSTNAME/$HOST_NAME/g" /etc/hosts
