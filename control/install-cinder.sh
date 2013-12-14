@@ -12,9 +12,8 @@ apt-get install --yes \
 
 sed -i 's/false/true/g' /etc/default/iscsitarget
 
-service iscsitarget restart
-service open-iscsi restart
-
+service iscsitarget start
+service open-iscsi start
 
 echo ''
 echo 'Generating cinder-columes.img file ...'
