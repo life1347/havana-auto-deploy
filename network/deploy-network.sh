@@ -5,5 +5,3 @@
 ./install-neutron.sh
 
 ./configure-neutron.sh
-
-reboot
