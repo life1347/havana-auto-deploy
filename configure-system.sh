@@ -55,6 +55,7 @@ net.ipv4.conf.all.arp_ignore=1
 net.ipv4.conf.all.arp_announce=2
 EOF
 
+echo "127.0.0.1 $HOST_NAME" >> /etc/hosts
 echo "$HOST_IP $CONTROL_HOST_NAME" >> /etc/hosts
 echo "$NETWORK_IP $NETWORK_HOST_NAME" >> /etc/hosts
 echo "$COMPUTE_IP $COMPUTE_HOST_NAME" >> /etc/hosts
