@@ -11,10 +11,6 @@ apt-get install --yes \
   nova-novncproxy \
   python-nova \
   python-novaclient
-  
-  
-  
-
 
 pip install --upgrade websockify
 
