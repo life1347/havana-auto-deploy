@@ -3,7 +3,7 @@
 source ../openrc
 
 router_name='public-router'
-tenant_name='demo'
+tenant_name='$DEMO_TENANT_NAME'
 tenant_net_name="${tenant_name}-net"
 tenant_net_range="***.***.***.***/***"
 tenant_subnet_name="${tenant_name}-subnet"

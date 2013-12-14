@@ -10,9 +10,9 @@ paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory
 auth_host = $HOST_IP
 auth_port = 35357
 auth_protocol = http
-admin_tenant_name = service
+admin_tenant_name = $SERVICE_TENANT_NAME
 admin_user = nova
-admin_password = swordfish
+admin_password = $SERVICE_PASSWORD
 signing_dirname = /tmp/keystone-signing-nova
 # Workaround for https://bugs.launchpad.net/nova/+bug/1154809
 auth_version = v2.0
@@ -22,7 +22,7 @@ EOF
 
 cat << EOF > /etc/nova/nova.conf.changes
 [DEFAULT]
-sql_connection = mysql://nova:swordfish@$HOST_IP/nova
+sql_connection = mysql://nova:$MYSQL_PASSWORD@$HOST_IP/nova
 my_ip = $COMPUTE_IP
 rabbit_host = $HOST_IP
 rabbit_password = guest
@@ -32,9 +32,9 @@ auth_strategy = keystone
 network_api_class = nova.network.neutronv2.api.API
 neutron_url = http://$HOST_IP:9696
 neutron_auth_strategy = keystone
-neutron_admin_tenant_name = service
+neutron_admin_tenant_name = $SERVICE_TENANT_NAME
 neutron_admin_username = neutron
-neutron_admin_password = swordfish
+neutron_admin_password = $SERVICE_PASSWORD
 neutron_admin_auth_url = http://$HOST_IP:35357/v2.0
 libvirt_vif_driver = nova.virt.libvirt.vif.LibvirtHybridOVSBridgeDriver
 linuxnet_interface_driver = nova.network.linux_net.LinuxOVSInterfaceDriver
@@ -44,7 +44,7 @@ firewall_driver = nova.virt.firewall.NoopFirewallDriver
 security_group_api = neutron
 
 # Metadata
-neutron_metadata_proxy_shared_secret = swordfish
+neutron_metadata_proxy_shared_secret = $PROXY_SHARED_SECRET
 service_neutron_metadata_proxy = True
 metadata_listen = $HOST_IP
 metadata_listen_port = 8775

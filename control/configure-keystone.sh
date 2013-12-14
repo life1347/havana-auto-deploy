@@ -6,12 +6,12 @@ source ../openrc
 
 cat << EOF > /etc/keystone/keystone.conf.changes
 [DEFAULT]
-admin_token = swordfish
+admin_token = $ADMIN_TOKEN
 debug = $DEBUG_OPEN
 verbose = $VERBOSE_OPEN
 
 [sql]
-connection = mysql://keystone:swordfish@$HOST_IP/keystone
+connection = mysql://keystone:$MYSQL_PASSWORD@$HOST_IP/keystone
 EOF
 
 #-------------------------------------------------------------------------------

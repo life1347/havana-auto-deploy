@@ -24,12 +24,12 @@ rabbit_password = guest
 auth_host = $HOST_IP
 auth_port = 35357
 auth_protocol = http
-admin_tenant_name = service
+admin_tenant_name = $SERVICE_TENANT_NAME
 admin_user = neutron
-admin_password = swordfish
+admin_password = $SERVICE_PASSWORD
 
 [database]
-connection = mysql://neutron:swordfish@$HOST_IP/neutron
+connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
 
 [quotas]
 quota_driver = neutron.db.quota_db.DbQuotaDriver
@@ -39,7 +39,7 @@ EOF
 
 cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
-sql_connection = mysql://neutron:swordfish@$HOST_IP/neutron
+sql_connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
 
 [ovs]
 tenant_network_type = gre
@@ -74,12 +74,12 @@ cat << EOF > /etc/neutron/metadata_agent.ini.changes
 [DEFAULT]
 auth_url = http://$HOST_IP:35357/v2.0
 auth_region = RegionOne
-admin_tenant_name = service
+admin_tenant_name = $SERVICE_TENANT_NAME
 admin_user = neutron
-admin_password = swordfish
+admin_password = $SERVICE_PASSWORD
 nova_metadata_ip = $HOST_IP
 nova_metadata_port = 8775
-metadata_proxy_shared_secret = swordfish
+metadata_proxy_shared_secret = $PROXY_SHARED_SECRET
 EOF
 
 #-------------------------------------------------------------------------------

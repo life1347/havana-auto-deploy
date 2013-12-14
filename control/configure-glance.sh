@@ -8,15 +8,15 @@ cat << EOF > /etc/glance/glance-api.conf.changes
 [DEFAULT]
 debug = $DEBUG_OPEN
 verbose = $VERBOSE_OPEN
-sql_connection = mysql://glance:swordfish@$HOST_IP/glance
+sql_connection = mysql://glance:$MYSQL_PASSWORD@$HOST_IP/glance
 
 [keystone_authtoken]
 auth_host = $HOST_IP
 auth_port = 35357
 auth_protocol = http
-admin_tenant_name = service
+admin_tenant_name = $SERVICE_TENANT_NAME
 admin_user = glance
-admin_password = swordfish
+admin_password = $SERVICE_PASSWORD
 
 [paste_deploy]
 flavor = keystone

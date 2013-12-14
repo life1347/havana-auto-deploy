@@ -38,12 +38,12 @@ easy_install pip
 apt-get -y install ntp
 
 touch ../creds
-echo "export OS_TENANT_NAME=admin" >> ../creds
 echo "export OS_USERNAME=admin" >> ../creds
-echo "export OS_PASSWORD=swordfish" >> ../creds
+echo "export OS_PASSWORD='$ADMIN_PASSWORD'" >> ../creds
+echo "export OS_TENANT_NAME=$ADMIN_TENANT_NAME" >> ../creds
 echo "export OS_AUTH_URL='http://$HOST_IP_ETH1:5000/v2.0/'" >> ../creds
 echo "export OS_SERVICE_ENDPOINT='http://$HOST_IP:35357/v2.0'" >> ../creds
-echo "export OS_SERVICE_TOKEN=swordfish" >> ../creds
+echo "export OS_SERVICE_TOKEN='$KEYSTONE_ADMIN_TOKEN'" >> ../creds
 
 cat << EOF >> /etc/sysctl.conf
 

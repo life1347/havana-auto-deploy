@@ -24,12 +24,12 @@ rabbit_password = guest
 auth_host = $HOST_IP
 auth_port = 35357
 auth_protocol = http
-admin_tenant_name = service
+admin_tenant_name = $SERVICE_TENANT_NAME
 admin_user = neutron
-admin_password = swordfish
+admin_password = $SERVICE_PASSWORD
 
 [database]
-connection = mysql://neutron:swordfish@$HOST_IP/neutron
+connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
 
 [quotas]
 quota_driver = neutron.db.quota_db.DbQuotaDriver
@@ -39,7 +39,7 @@ EOF
 
 cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
-sql_connection = mysql://neutron:swordfish@$HOST_IP/neutron
+sql_connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
 
 [ovs]
 tenant_network_type = gre
