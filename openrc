@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#host name should be same as the following default host name
+#default hostname : control, network, compute1
 HOST_NAME=
 
 #default nodes hosts name
@@ -52,20 +52,44 @@ NETWORK_IP_ETH2=10.211.55.61
 COMPUTE_IP=10.211.55.62
 COMPUTE_IP_ETH1=10.211.55.57
 
+#NOTICE : 
+# if for development purpose, it better not to modify the following setting.
+# if for production purpose, you have to make sure that you know the meaning of every setting 
+
 #database password
 MYSQL_PASSWORD=swordfish
+MONGODB_PASSWORD=swordfish
+
+#proxy shared secret
+PROXY_SHARED_SECRET=swordfish
+
+#admin token
+ADMIN_TOKEN=$(openssl rand -hex 10)
+
+#service admin password
+ADMIN_PASSWORD=swordfish
+SERVICE_PASSWORD=swordfish
+DEMO_PASSWORD=swordfish
+
+#sevice tenant name
+ADMIN_TENANT_NAME=admin
+SERVICE_TENANT_NAME=service
+DEMO_TENANT_NAME=demo
+
+#keystone region
+KEYSTONE_REGION=RegionOne
 
 #enable debug mode
 DEBUG_OPEN=True
 VERBOSE_OPEN=True
 
 #enviorment variables for keystone auth
-export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
-export OS_PASSWORD=swordfish
+export OS_PASSWORD=$ADMIN_PASSWORD
+export OS_TENANT_NAME=$ADMIN_TENANT_NAME
 export OS_AUTH_URL="http://$HOST_IP_ETH1:5000/v2.0/"
 export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
-export OS_SERVICE_TOKEN=swordfish
+export OS_SERVICE_TOKEN=$ADMIN_TOKEN
 
 # Node Mac & IP
 # 
