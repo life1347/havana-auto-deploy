@@ -64,7 +64,7 @@ MONGODB_PASSWORD=swordfish
 PROXY_SHARED_SECRET=swordfish
 
 #admin token
-ADMIN_TOKEN=$(openssl rand -hex 10)
+ADMIN_TOKEN=swordfish
 
 #service admin password
 ADMIN_PASSWORD=swordfish

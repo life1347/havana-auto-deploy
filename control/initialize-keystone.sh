@@ -14,6 +14,8 @@ function get_field() {
     done
 }
 
+export OS_SERVICE_TOKEN=$ADMIN_TOKEN
+export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
 
 # Tenants
 ADMIN_TENANT=$(keystone tenant-create \
