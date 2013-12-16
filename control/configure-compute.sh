@@ -35,7 +35,7 @@ neutron_admin_tenant_name = $SERVICE_TENANT_NAME
 neutron_admin_username = neutron
 neutron_admin_password = $SERVICE_PASSWORD
 neutron_admin_auth_url = http://$HOST_IP:35357/v2.0
-libvirt_vif_driver = nova.virt.libvirt.vif.LibvirtHybridOVSBridgeDriver
+libvirt_vif_driver = nova.virt.libvirt.vif.LibvirtGenericVIFDriver
 linuxnet_interface_driver = nova.network.linux_net.LinuxOVSInterfaceDriver
 
 # Security Groups
