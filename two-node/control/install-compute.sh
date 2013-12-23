@@ -1,0 +1,35 @@
+#!/bin/bash
+
+apt-get install --yes \
+  nova-api \
+  nova-cert \
+  novnc \
+  nova-consoleauth \
+  nova-scheduler \
+  nova-common \
+  nova-conductor \
+  nova-novncproxy \
+  python-nova \
+  python-novaclient
+
+pip install --upgrade websockify
+
+#-------------------------------------------------------------------------------
+#
+#cat << EOF > /usr/share/novnc/include/rfb.js.patch
+#--- rfb.js.orig 2013-10-10 07:17:44.578231408 -0400
+#+++ rfb.js  2013-10-10 07:17:57.914152552 -0400
+#@@ -1784,7 +1784,7 @@
+# that.connect = function(host, port, password, path) {
+#     //Util.Debug(">> connect");
+# 
+#-    nova_token     = token;
+#+//    nova_token     = token;
+#     rfb_host       = host;
+#     rfb_port       = port;
+#     rfb_password   = (password !== undefined)   ? password : "";
+#EOF
+#
+#-------------------------------------------------------------------------------
+#
+#cd /usr/share/novnc/include/ && patch -b -p0 < rfb.js.patch

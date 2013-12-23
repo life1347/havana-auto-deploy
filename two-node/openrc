@@ -1,0 +1,103 @@
+#!/bin/bash
+
+#default hostname : control, network, compute1
+HOST_NAME=virtualP16
+
+#default nodes hosts name
+CONTROL_HOST_NAME=virtualP16
+COMPUTE_HOST_NAME=virtualP53
+
+#default dns server, may use another dns server as default server.
+DEFAULT_DNS_SERVER=8.8.8.8
+
+#NOTICE : if your vm is not dhcp, you have to modify network/install-neutron.sh 
+#
+#	ORIGINAL :
+#	sed -i 's/iface eth2 inet dhcp/iface eth2 inet manual/g' /etc/network/interfaces
+#	echo 'up ifconfig $IFACE 0.0.0.0 up' >> /etc/network/interfaces
+#	echo 'up ip link set $IFACE promisc on' >> /etc/network/interfaces
+#	echo 'down ip link set $IFACE promisc off' >> /etc/network/interfaces
+#	echo 'down ifconfig $IFACE down' >> /etc/network/interfaces	
+#
+#	MANUAL ADD THIS LINE TO /etc/network/interfaces
+#	
+#	iface eth2 inet manual
+#
+#	AFTER :
+#	echo 'up ifconfig $IFACE 0.0.0.0 up' >> /etc/network/interfaces
+#	echo 'up ip link set $IFACE promisc on' >> /etc/network/interfaces
+#	echo 'down ip link set $IFACE promisc off' >> /etc/network/interfaces
+#	echo 'down ifconfig $IFACE down' >> /etc/network/interfaces	
+#
+#	IN THE END /etc/network/interfaces SETTING FOR eth2 SHOULD BE LIKE THE FOLLOWING
+#	
+#	iface eth2 inet manual
+#	up ifconfig $IFACE 0.0.0.0 up
+#	up ip link set $IFACE promisc on
+#	down ip link set $IFACE promisc off
+#	down ifconfig $IFACE down
+
+
+#control ip
+HOST_IP=140.114.91.16
+HOST_IP_ETH1=10.228.91.41
+
+#compute1 ip
+COMPUTE_IP=140.114.91.53
+COMPUTE_IP_ETH1=10.228.91.40
+
+#NOTICE : 
+# if for development purpose, it better not to modify the following setting.
+# if for production purpose, you have to make sure that you know the meaning of every setting 
+
+#database password
+MYSQL_PASSWORD=swordfish
+MONGODB_PASSWORD=swordfish
+
+#proxy shared secret
+PROXY_SHARED_SECRET=swordfish
+
+#admin token
+ADMIN_TOKEN=swordfish
+
+#service admin password
+ADMIN_PASSWORD=swordfish
+SERVICE_PASSWORD=swordfish
+DEMO_PASSWORD=swordfish
+
+#sevice tenant name
+ADMIN_TENANT_NAME=admin
+SERVICE_TENANT_NAME=service
+DEMO_TENANT_NAME=demo
+
+#keystone region
+KEYSTONE_REGION=RegionOne
+
+#enable debug mode
+DEBUG_OPEN=True
+VERBOSE_OPEN=True
+
+#enviorment variables for keystone auth
+export OS_USERNAME=admin
+export OS_PASSWORD=$ADMIN_PASSWORD
+export OS_TENANT_NAME=$ADMIN_TENANT_NAME
+export OS_AUTH_URL="http://$HOST_IP_ETH1:5000/v2.0/"
+export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
+export OS_SERVICE_TOKEN=$ADMIN_TOKEN
+
+# Node Mac & IP
+# 
+# control
+# 00:1C:42:1A:DC:6E  10.211.55.54
+# 00:1C:42:32:04:85  10.211.55.56
+# 00:1C:42:8B:68:85  10.211.55.55
+
+# network
+# 00:1C:42:25:39:96  10.211.55.60
+# 00:1C:42:6B:54:98  10.211.55.59
+# 00:1C:42:E1:AB:E2  10.211.55.61
+
+# compute1
+# 00:1C:42:29:8C:D2  10.211.55.58
+# 00:1C:42:64:2C:10  10.211.55.62
+# 00:1C:42:BB:AF:24  10.211.55.57
