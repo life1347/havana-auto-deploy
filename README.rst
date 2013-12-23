@@ -33,8 +33,13 @@ Configure the system
 **Configured**
 ::
     # set up nodes information in openrc(EVERY node should set up before deployment)
-    $ cd havana-from-packages; vim openrc
+    $ cd havana-auto-deploy/multi-node; vim openrc
 ..
+
+NOTE
+============
+* openrc must be same on each node
+* creds(credentials), which contains auth information, would be created at same level of directory of openrc
 
 Installation
 ============
@@ -57,9 +62,6 @@ Installation
 ::
     $ cd ./multi-node/compute; ./deploy-compute.sh
 ..
-
-**NOTE: openrc must be same on each node**
-**NOTE: creds(credentials), which contains auth information, would be created at same level of directory of openrc**
 
 HELLO WORLD, YAHOO!!!!!!!!!
 ==============
