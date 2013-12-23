@@ -1,3 +1,9 @@
+Havana auto-Deploy scripts
+####################
+
+Multi-node Deployment:
+    https://github.com/life1347/havana-auto-deploy/blob/master/README.rst#havana-multi-node-deploy-scripts
+
 Havana Multi Node Deploy scripts
 ####################
 
