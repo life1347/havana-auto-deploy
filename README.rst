@@ -45,20 +45,21 @@ Installation
 
 **Control node**
 ::
-    $ cd ./control; ./deploy-control.sh
+    $ cd ./multi-node/control; ./deploy-control.sh
 ..
 
 **Network node**
 ::
-    $ cd ./network; ./deploy-network.sh
+    $ cd ./multi-node/network; ./deploy-network.sh
 ..
 
 **Compute node**
 ::
-    $ cd ./compute; ./deploy-compute.sh
+    $ cd ./multi-node/compute; ./deploy-compute.sh
 ..
 
-**NOTE: creds(credentials), which contains auth information, would be created same level of directory of openrc at control node**
+**NOTE: openrc must be same on each node**
+**NOTE: creds(credentials), which contains auth information, would be created at same level of directory of openrc**
 
 HELLO WORLD, YAHOO!!!!!!!!!
 ==============
