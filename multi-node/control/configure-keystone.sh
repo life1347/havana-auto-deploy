@@ -11,7 +11,7 @@ debug = $DEBUG_OPEN
 verbose = $VERBOSE_OPEN
 
 [sql]
-connection = mysql://keystone:$MYSQL_PASSWORD@$HOST_IP/keystone
+connection = mysql://keystone:$MYSQL_PASSWORD@$CONTROL_IP/keystone
 EOF
 
 #-------------------------------------------------------------------------------

@@ -8,10 +8,10 @@ cat << EOF > /etc/glance/glance-api.conf.changes
 [DEFAULT]
 debug = $DEBUG_OPEN
 verbose = $VERBOSE_OPEN
-sql_connection = mysql://glance:$MYSQL_PASSWORD@$HOST_IP/glance
+sql_connection = mysql://glance:$MYSQL_PASSWORD@$CONTROL_IP/glance
 
 [keystone_authtoken]
-auth_host = $HOST_IP
+auth_host = $CONTROL_IP
 auth_port = 35357
 auth_protocol = http
 admin_tenant_name = $SERVICE_TENANT_NAME

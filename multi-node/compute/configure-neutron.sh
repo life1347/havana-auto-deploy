@@ -16,12 +16,12 @@ allow_overlapping_ips = True
 
 api_paste_config = api-paste.ini
 
-rabbit_host = $HOST_IP
+rabbit_host = $CONTROL_IP
 rabbit_userid = guest
 rabbit_password = guest
 
 [keystone_authtoken]
-auth_host = $HOST_IP
+auth_host = $CONTROL_IP
 auth_port = 35357
 auth_protocol = http
 admin_tenant_name = $SERVICE_TENANT_NAME
@@ -29,7 +29,7 @@ admin_user = neutron
 admin_password = $SERVICE_PASSWORD
 
 [database]
-connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
+connection = mysql://neutron:$MYSQL_PASSWORD@$CONTROL_IP/neutron
 
 [quotas]
 quota_driver = neutron.db.quota_db.DbQuotaDriver
@@ -39,7 +39,7 @@ EOF
 
 cat << EOF > /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini.changes
 [database]
-sql_connection = mysql://neutron:$MYSQL_PASSWORD@$HOST_IP/neutron
+sql_connection = mysql://neutron:$MYSQL_PASSWORD@$CONTROL_IP/neutron
 
 [ovs]
 tenant_network_type = gre
@@ -65,5 +65,3 @@ EOF
 ln -s /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini /etc/neutron/plugin.ini
 
 ./restart-os-services.sh neutron
-
-./configure-neutron-network.sh

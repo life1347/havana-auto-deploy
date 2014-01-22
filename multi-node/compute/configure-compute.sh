@@ -7,7 +7,7 @@ source ../openrc
 cat << EOF > /etc/nova/api-paste.ini.changes
 [filter:authtoken]
 paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory
-auth_host = $HOST_IP
+auth_host = $CONTROL_IP
 auth_port = 35357
 auth_protocol = http
 admin_tenant_name = $SERVICE_TENANT_NAME
@@ -22,20 +22,20 @@ EOF
 
 cat << EOF > /etc/nova/nova.conf.changes
 [DEFAULT]
-sql_connection = mysql://nova:$MYSQL_PASSWORD@$HOST_IP/nova
+sql_connection = mysql://nova:$MYSQL_PASSWORD@$CONTROL_IP/nova
 my_ip = $COMPUTE_IP
-rabbit_host = $HOST_IP
+rabbit_host = $CONTROL_IP
 rabbit_password = guest
 auth_strategy = keystone
 
 # Networking
 network_api_class = nova.network.neutronv2.api.API
-neutron_url = http://$NETWORK_IP_ETH1:9696
+neutron_url = http://$CONTROL_IP:9696
 neutron_auth_strategy = keystone
 neutron_admin_tenant_name = $SERVICE_TENANT_NAME
 neutron_admin_username = neutron
 neutron_admin_password = $SERVICE_PASSWORD
-neutron_admin_auth_url = http://$HOST_IP:35357/v2.0
+neutron_admin_auth_url = http://$CONTROL_IP:35357/v2.0
 libvirt_vif_driver = nova.virt.libvirt.vif.LibvirtGenericVIFDriver
 linuxnet_interface_driver = nova.network.linux_net.LinuxOVSInterfaceDriver
 
@@ -54,7 +54,7 @@ metadata_host = $NETWORK_IP_ETH1
 volume_api_class = nova.volume.cinder.API
 
 # Glance
-glance_api_servers = $HOST_IP:9292
+glance_api_servers = $CONTROL_IP:9292
 image_service = nova.image.glance.GlanceImageService
 
 # novnc
@@ -62,7 +62,7 @@ novnc_enabled = True
 novncproxy_port = 6080
 vncserver_listen = 0.0.0.0
 vncserver_proxyclient_address = $COMPUTE_IP
-novncproxy_base_url = http://$HOST_IP:6080/vnc_auto.html
+novncproxy_base_url = http://$CONTROL_IP:6080/vnc_auto.html
 EOF
 
 #-------------------------------------------------------------------------------

@@ -41,8 +41,8 @@ touch ../creds
 echo "export OS_USERNAME=admin" >> ../creds
 echo "export OS_PASSWORD='$ADMIN_PASSWORD'" >> ../creds
 echo "export OS_TENANT_NAME=$ADMIN_TENANT_NAME" >> ../creds
-echo "export OS_AUTH_URL='http://$HOST_IP_ETH1:5000/v2.0/'" >> ../creds
-echo "export OS_SERVICE_ENDPOINT='http://$HOST_IP:35357/v2.0'" >> ../creds
+echo "export OS_AUTH_URL='http://$CONTROL_IP:5000/v2.0/'" >> ../creds
+echo "export OS_SERVICE_ENDPOINT='http://$CONTROL_IP:35357/v2.0'" >> ../creds
 echo "export OS_SERVICE_TOKEN='$ADMIN_TOKEN'" >> ../creds
 
 cat << EOF >> /etc/sysctl.conf
@@ -56,7 +56,7 @@ net.ipv4.conf.all.arp_announce=2
 EOF
 
 echo "127.0.0.1 $HOST_NAME" >> /etc/hosts
-echo "$HOST_IP $CONTROL_HOST_NAME" >> /etc/hosts
+echo "$CONTROL_IP $CONTROL_HOST_NAME" >> /etc/hosts
 echo "$NETWORK_IP $NETWORK_HOST_NAME" >> /etc/hosts
 echo "$COMPUTE_IP $COMPUTE_HOST_NAME" >> /etc/hosts
 

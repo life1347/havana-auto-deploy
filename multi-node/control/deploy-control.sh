@@ -26,17 +26,17 @@
 
 ./install-dashboard.sh
 
-#./install-neutron.sh
+./install-neutron.sh
 
-#./configure-neutron.sh
+./configure-neutron.sh
 
 ./install-compute.sh
 
 ./configure-compute.sh
 
-#./install-heat.sh
+./install-heat.sh
 
-#./configure-heat.sh
+./configure-heat.sh
 
 #./install-ceilometer.sh
 

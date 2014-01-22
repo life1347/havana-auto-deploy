@@ -3,7 +3,6 @@
 apt-get install --yes \
 	openvswitch-switch \
     openvswitch-datapath-dkms \
-    neutron-server \
 	neutron-plugin-openvswitch-agent \
     neutron-dhcp-agent \
     neutron-l3-agent \

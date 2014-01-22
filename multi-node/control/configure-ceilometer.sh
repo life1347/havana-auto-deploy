@@ -5,7 +5,7 @@ source ../openrc
 #-------------------------------------------------------------------------------
 
 cat << EOF > /etc/mongodb.conf.changes
-bind_ip = $HOST_IP
+bind_ip = $CONTROL_IP
 EOF
 
 #-------------------------------------------------------------------------------
@@ -17,13 +17,13 @@ service mongodb restart
 
 cat << EOF > /etc/ceilometer/ceilometer.conf.changes
 [database]
-connection = mongodb://ceilometer:$MONGODB_PASSWORD@$HOST_IP:27017/ceilometer
+connection = mongodb://ceilometer:$MONGODB_PASSWORD@$CONTROL_IP:27017/ceilometer
 # Secret value for signing metering messages (string value)
 metering_secret = $ADMIN_TOKEN
 rabbit_host = guest
 rabbit_password = guest
 #keystone auth
-auth_host = $HOST_IP
+auth_host = $CONTROL_IP
 auth_port = 35357
 auth_protocol = http
 admin_tenant_name = $SERVICE_TENANT_NAME

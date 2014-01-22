@@ -15,7 +15,7 @@ function get_field() {
 }
 
 export OS_SERVICE_TOKEN=$ADMIN_TOKEN
-export OS_SERVICE_ENDPOINT="http://$HOST_IP:35357/v2.0"
+export OS_SERVICE_ENDPOINT="http://$CONTROL_IP:35357/v2.0"
 
 # Tenants
 ADMIN_TENANT=$(keystone tenant-create \
@@ -136,56 +136,56 @@ CEILOMETER_SERVICE=$(keystone service-create \
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $COMPUTE_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':8774/v2/$(tenant_id)s' \
-  --adminurl 'http://'"$HOST_IP"':8774/v2/$(tenant_id)s' \
-  --internalurl 'http://'"$HOST_IP"':8774/v2/$(tenant_id)s'
+  --publicurl 'http://'"$CONTROL_IP"':8774/v2/$(tenant_id)s' \
+  --adminurl 'http://'"$CONTROL_IP"':8774/v2/$(tenant_id)s' \
+  --internalurl 'http://'"$CONTROL_IP"':8774/v2/$(tenant_id)s'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $VOLUME_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':8776/v1/$(tenant_id)s' \
-  --adminurl 'http://'"$HOST_IP"':8776/v1/$(tenant_id)s' \
-  --internalurl 'http://'"$HOST_IP"':8776/v1/$(tenant_id)s'
+  --publicurl 'http://'"$CONTROL_IP"':8776/v1/$(tenant_id)s' \
+  --adminurl 'http://'"$CONTROL_IP"':8776/v1/$(tenant_id)s' \
+  --internalurl 'http://'"$CONTROL_IP"':8776/v1/$(tenant_id)s'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $IMAGE_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':9292' \
-  --adminurl 'http://'"$HOST_IP"':9292' \
-  --internalurl 'http://'"$HOST_IP"':9292'
+  --publicurl 'http://'"$CONTROL_IP"':9292' \
+  --adminurl 'http://'"$CONTROL_IP"':9292' \
+  --internalurl 'http://'"$CONTROL_IP"':9292'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $IDENTITY_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':5000/v2.0' \
-  --adminurl 'http://'"$HOST_IP"':35357/v2.0' \
-  --internalurl 'http://'"$HOST_IP"':5000/v2.0'
+  --publicurl 'http://'"$CONTROL_IP"':5000/v2.0' \
+  --adminurl 'http://'"$CONTROL_IP"':35357/v2.0' \
+  --internalurl 'http://'"$CONTROL_IP"':5000/v2.0'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $EC2_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':8773/services/Cloud' \
-  --adminurl 'http://'"$HOST_IP"':8773/services/Admin' \
-  --internalurl 'http://'"$HOST_IP"':8773/services/Cloud'
+  --publicurl 'http://'"$CONTROL_IP"':8773/services/Cloud' \
+  --adminurl 'http://'"$CONTROL_IP"':8773/services/Admin' \
+  --internalurl 'http://'"$CONTROL_IP"':8773/services/Cloud'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $NETWORK_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':9696/' \
-  --adminurl 'http://'"$HOST_IP"':9696/' \
-  --internalurl 'http://'"$HOST_IP"':9696/'
+  --publicurl 'http://'"$CONTROL_IP"':9696/' \
+  --adminurl 'http://'"$CONTROL_IP"':9696/' \
+  --internalurl 'http://'"$CONTROL_IP"':9696/'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $HEAT_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':8004/v1/%(tenant_id)s' \
-  --adminurl 'http://'"$HOST_IP"':8004/v1/%(tenant_id)s' \
-  --internalurl 'http://'"$HOST_IP"':8004/v1/%(tenant_id)s'
+  --publicurl 'http://'"$CONTROL_IP"':8004/v1/$(tenant_id)s' \
+  --adminurl 'http://'"$CONTROL_IP"':8004/v1/$(tenant_id)s' \
+  --internalurl 'http://'"$CONTROL_IP"':8004/v1/$(tenant_id)s'
 
 keystone endpoint-create \
   --region $KEYSTONE_REGION \
   --service-id $CEILOMETER_SERVICE \
-  --publicurl 'http://'"$HOST_IP"':8777/' \
-  --adminurl 'http://'"$HOST_IP"':8777/' \
-  --internalurl 'http://'"$HOST_IP"':8777/'
+  --publicurl 'http://'"$CONTROL_IP"':8777/' \
+  --adminurl 'http://'"$CONTROL_IP"':8777/' \
+  --internalurl 'http://'"$CONTROL_IP"':8777/'
 
