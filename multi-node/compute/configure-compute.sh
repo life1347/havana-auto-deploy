@@ -30,7 +30,7 @@ auth_strategy = keystone
 
 # Networking
 network_api_class = nova.network.neutronv2.api.API
-neutron_url = http://$HOST_IP:9696
+neutron_url = http://$NETWORK_IP_ETH1:9696
 neutron_auth_strategy = keystone
 neutron_admin_tenant_name = $SERVICE_TENANT_NAME
 neutron_admin_username = neutron
@@ -46,9 +46,9 @@ security_group_api = neutron
 # Metadata
 neutron_metadata_proxy_shared_secret = $PROXY_SHARED_SECRET
 service_neutron_metadata_proxy = True
-metadata_listen = $HOST_IP
+metadata_listen = $NETWORK_IP_ETH1
 metadata_listen_port = 8775
-metadata_host = $HOST_IP
+metadata_host = $NETWORK_IP_ETH1
 
 # Cinder
 volume_api_class = nova.volume.cinder.API

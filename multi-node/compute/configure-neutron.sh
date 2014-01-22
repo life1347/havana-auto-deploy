@@ -65,3 +65,5 @@ EOF
 ln -s /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini /etc/neutron/plugin.ini
 
 ./restart-os-services.sh neutron
+
+./configure-neutron-network.sh
