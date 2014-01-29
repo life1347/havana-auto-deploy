@@ -39,12 +39,12 @@ DEFAULT_DNS_SERVER=8.8.8.8
 
 
 #control ip
-HOST_IP=140.114.91.16
-HOST_IP_ETH1=10.228.91.41
+HOST_IP=xxxxxxxxxx
+HOST_IP_ETH1=xxxxxxxxxx
 
 #compute1 ip
-COMPUTE_IP=140.114.91.53
-COMPUTE_IP_ETH1=10.228.91.40
+COMPUTE_IP=xxxxxxxxxx
+COMPUTE_IP_ETH1=xxxxxxxxxx
 
 #NOTICE : 
 # if for development purpose, it better not to modify the following setting.
