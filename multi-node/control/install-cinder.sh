@@ -16,7 +16,7 @@ service iscsitarget start
 service open-iscsi start
 
 echo ''
-echo 'Generating cinder-columes.img file ...'
+echo 'Generating cinder-volumes.img file ...'
 dd if=/dev/zero of=/opt/cinder-volumes.img bs=100 count=10M
 sleep 5
 
