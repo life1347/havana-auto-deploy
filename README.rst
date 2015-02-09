@@ -1,3 +1,5 @@
+THIS REPO IS DEPRECATED AND IT WILL NOT UPDATE ANYMORE. PLEASE VISIT https://github.com/life1347/openstack-deploy-scripts INSTEAD.
+
 Havana auto-Deploy scripts
 ####################
 
